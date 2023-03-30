@@ -175,3 +175,26 @@ int restoRecursivo(int dividendo, int divisor){
 
 
 // ------------- PUNTO 5 ---------------- //
+
+// ------------ PUNTO 7 ---------------- //
+
+char *chinos(unsigned int nivel)
+{
+    // char *chino = malloc (sizeof(char)*nivel);
+    if (nivel == 0)
+    {
+        printf("No asistió ningun chino\n");
+    }
+    if (nivel == 1)
+    {
+        printf("(-.-)");
+    }
+    if (nivel > 1)
+    {
+        printf("(-.");
+        *chinos(nivel - 1);
+        printf(".-)");
+    }
+}
+
+// ----------FIN PUNTO 7 ---------------- //
