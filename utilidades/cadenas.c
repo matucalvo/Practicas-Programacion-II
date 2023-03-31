@@ -13,7 +13,7 @@ void imprimir_titulo(char* titulo) {
     free(subrayado);
 }
 
-char *cadena_enteros_como_string(int list[], int size) {
+char* cadena_enteros_como_string(int list[], int size) {
     char *result = (char *) malloc(sizeof(char) * (size * 10 + 3));
     strcpy(result, "[");
     for (int i = 0; i < size; i++) {

@@ -24,12 +24,16 @@ char* agregarSeparadoresRecursivo(char* numero, int indice, int contador);
 
 char* agregarSeparadorMiles(char* numero);
 
+int restoRecursivo(int dividendo, int divisor);
+
 
 // ---------- FUNCIONES AUXILIARES ---------------
 
 bool esCapicuaAux(char *numero, int inicio, int final);
 
 bool esPalindromoAux(char *palabra, int inicio, int fin);
+
+int explosionAux(int n, int b, int *size, int **arr);
 
 //  --------------------------------------------------
 
@@ -197,4 +201,51 @@ char *chinos(unsigned int nivel)
     }
 }
 
-// ----------FIN PUNTO 7 ---------------- //
+// ---------- PUNTO 7 ---------------- //
+
+
+
+
+// ---------- PUNTO 10 ---------------- //
+int *explosion(int n, int b, int *size){
+    int i;
+    int *arreglo = malloc(sizeof(int));
+
+    
+    explosionAux(n,b,&size, &arreglo);
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arreglo[i]);
+    }
+
+
+
+
+    free(arreglo);
+
+    return arreglo;
+}
+
+int explosionAux(int n, int b, int *size, int **arr){
+     int c = 0;
+ 
+    
+
+    if (n <= b){
+        (*size)++;
+        *arr = realloc(*arr, (*size) * sizeof(int));
+        (*arr)[*size - 1] = b;
+        c = b;
+    } else { 
+        (*size)++;
+        c = n/b;
+        *arr = realloc(*arr, (*size) * sizeof(int));
+        (*arr)[*size - 1] = c;
+        explosionAux(n-c, b, size, arr);
+    }
+
+    return c;
+}
+
+
+// ---------- PUNTO 10 ---------------- //
