@@ -28,7 +28,7 @@ int main() {
 
     char cadenaAconvertir[] = "HL"; // cadena para transformar a onda digital
 
-    char ondaDigital[] = "‾|_"; // onda digital esperada
+    char ondaDigital[] = "-|_"; // onda digital esperada
 
     probar(cadenaAconvertir, ondaDigital);
 
