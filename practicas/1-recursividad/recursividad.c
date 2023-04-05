@@ -237,11 +237,11 @@ char* ondaDigitalAux(char *onda, int *size, char **ondaAux){
     }else if (*onda == 'H'){
         if (*(onda+1) == 'L'){
             *size += 2;
-            (*ondaAux)[*size - 2] = '‾';
+            (*ondaAux)[*size - 2] = '-';
             (*ondaAux)[*size - 1] = '|';
             return ondaDigitalAux(onda+1, size, ondaAux);
         } else  *size += 1;
-                 (*ondaAux)[*size - 1] = '‾';
+                 (*ondaAux)[*size - 1] = '-';
                  return ondaDigitalAux(onda+1, size, ondaAux); }
     else if (*onda == 'L'){
         if (*(onda+1) == 'H'){
