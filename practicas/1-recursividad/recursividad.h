@@ -24,4 +24,6 @@ bool esDivisiblePor7(int n);
 
 int* explosion(int n, int b, int* size);
 
+char* ondaDigital(char *onda);
+
 #endif // RECURSIVIDAD_H
