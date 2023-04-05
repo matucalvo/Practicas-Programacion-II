@@ -212,16 +212,7 @@ int *explosion(int n, int b, int *size){
     int *arreglo = malloc(sizeof(int));
 
     
-    explosionAux(n,b,&size, &arreglo);
-
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arreglo[i]);
-    }
-
-
-
-
-    free(arreglo);
+    explosionAux(n,b,size, &arreglo);
 
     return arreglo;
 }
