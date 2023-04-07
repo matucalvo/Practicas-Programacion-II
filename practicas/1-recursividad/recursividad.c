@@ -26,8 +26,6 @@ char* agregarSeparadorMiles(char* numero);
 
 int restoRecursivo(int dividendo, int divisor);
 
-char* ondaDigital(char *onda);
-
 
 // ---------- FUNCIONES AUXILIARES ---------------
 
@@ -36,10 +34,6 @@ bool esCapicuaAux(char *numero, int inicio, int final);
 bool esPalindromoAux(char *palabra, int inicio, int fin);
 
 int explosionAux(int n, int b, int *size, int **arr);
-
-char* ondaDigitalAux(char *onda, int *size, char **ondaAux);
-
-int cant_caracteres(char* onda);
 
 //  --------------------------------------------------
 
@@ -190,97 +184,42 @@ int restoRecursivo(int dividendo, int divisor){
 
 char *chinos(unsigned int nivel)
 {
-    // char *chino = malloc (sizeof(char)*nivel);
-    if (nivel == 0)
-    {
-        printf("No asistió ningun chino\n");
-    }
     if (nivel == 1)
     {
-        printf("(-.-)");
+        char* result;
+        result = (char*) malloc (sizeof(char)*6);
+        strcpy (result, "(-.-)");
+        return result;
+
     }
-    if (nivel > 1)
+    else 
     {
-        printf("(-.");
-        *chinos(nivel - 1);
-        printf(".-)");
+        char* nivelAnterior = chinos (nivel - 1);
+        char* result = (char *) malloc (sizeof(char) * (6 + 1 + strlen(nivelAnterior))); //
+        sprintf (result, "(-.%s.-)", nivelAnterior);
+        free (nivelAnterior);
+        return result;
     }
 }
 
 // ---------- PUNTO 7 ---------------- //
 
+// ---------- PUNTO 9 ---------------- //
 
+bool esDivisiblePor7(int n){
+    int ultimoDigito = n % 10;
+    int resto = n / 10;
 
-// ---------- PUNTO 8 ---------------- //
-
-
-char* ondaDigital(char *onda){
-    int tamano_maximo;
-    tamano_maximo = cant_caracteres(onda);
-    char* ondaAux = (char*) malloc(((tamano_maximo) * sizeof(char)) + 1);
-    int size = 0;
-
-
-    ondaDigitalAux(onda, &size, &ondaAux);
-
-    return ondaAux;
+    if (n == 0 || n == 7)
+        return true;
+    else if (n < 10)
+        return false;
+    else
+        return esDivisiblePor7(resto - (2 * ultimoDigito));
 
 }
 
-
-
-char* ondaDigitalAux(char *onda, int *size, char **ondaAux){
-
-    if (*onda == '\0'){
-        (*ondaAux)[*size] = '\0';
-        return ondaAux;
-    }else if (*onda == 'H'){
-        if (*(onda+1) == 'L'){
-            *size += 2;
-            (*ondaAux)[*size - 2] = '-';
-            (*ondaAux)[*size - 1] = '|';
-            return ondaDigitalAux(onda+1, size, ondaAux);
-        } else  *size += 1;
-                 (*ondaAux)[*size - 1] = '-';
-                 return ondaDigitalAux(onda+1, size, ondaAux); }
-    else if (*onda == 'L'){
-        if (*(onda+1) == 'H'){
-            *size += 2;
-            (*ondaAux)[*size - 2] = '_';
-            (*ondaAux)[*size - 1] = '|';
-            return ondaDigitalAux(onda+1, size, ondaAux);
-        } else  *size += 1;
-                (*ondaAux)[*size - 1] = '_';
-                return ondaDigitalAux(onda+1, size, ondaAux); }
-
-}
-
-
-int cant_caracteres(char* onda){                   // funcion que cuenta los caracteres que va a tener la onda convertida
-    int contador = 0;
-    int i;
-
-    for (i = 0; i < strlen(onda); i++)
-    {
-        if (onda[i] == 'H'){
-        if (onda[i+1] == 'L'){
-            contador += 2;
-        } else contador++;       
-    } else if (onda[i] == 'L'){
-        if (onda[i+1] == 'H'){
-            contador += 2;
-        }else contador++;
-    } 
-    }
-
-    return contador;
-
-}
-
-// ---------- PUNTO 8 ---------------- //
-
-
-
+// ---------- PUNTO 9 ---------------- //
 
 // ---------- PUNTO 10 ---------------- //
 int *explosion(int n, int b, int *size){
@@ -288,7 +227,16 @@ int *explosion(int n, int b, int *size){
     int *arreglo = malloc(sizeof(int));
 
     
-    explosionAux(n,b,size, &arreglo);
+    explosionAux(n,b,&size, &arreglo);
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arreglo[i]);
+    }
+
+
+
+
+    free(arreglo);
 
     return arreglo;
 }
