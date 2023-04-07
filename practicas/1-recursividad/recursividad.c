@@ -207,15 +207,15 @@ char *chinos(unsigned int nivel)
 // ---------- PUNTO 9 ---------------- //
 
 bool esDivisiblePor7(int n){
-    int ultimoDigito = n % 10;
-    int resto = n / 10;
+    int ultimoDigito = n % 10; //Obtiene el ultimo digito del numero
+    int resto = n / 10; //Se obtiene el resto del numero, menos el ultimo digito
 
-    if (n == 0 || n == 7)
+    if (n % 7 == 0 || n == 7)
         return true;
     else if (n < 10)
         return false;
     else
-        return esDivisiblePor7(resto - (2 * ultimoDigito));
+        return esDivisiblePor7(resto - 2 * ultimoDigito);
 
 }
 
