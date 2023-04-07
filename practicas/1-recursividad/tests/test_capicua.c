@@ -4,12 +4,20 @@
 #include "cadenas.h"
 #include "../recursividad.h"
 
+void probar (int n, bool esperado){
+    bool resultado = esCapicua(n);
+    printf("El numero %d ==> %s\n",n,resultado==1?"Es capicua":"No es capicua");
+    assert(bool_eq(resultado,esperado));
+}
+
 int main() {
     imprimir_titulo("Tests para Capicua");
-
-    printf("161 ==> %d \n", esCapicua(161));
-    printf("2992 ==> %d \n", esCapicua(2992));
-    printf("19341 ==> %d \n", esCapicua(19341));
+    //Tests propuestos
+    probar(161,true);
+    probar(2992,true);
+    probar(2993,false);
+    //Tests adicionales
+    probar(19341,false);
 
     return 0;
 }
