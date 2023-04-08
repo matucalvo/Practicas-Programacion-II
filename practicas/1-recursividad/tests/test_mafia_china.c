@@ -5,18 +5,23 @@
 #include "cadenas.h"
 #include "../recursividad.h"
 
+void probar(int n, char *esperado) {
+    char *res = chinos(n);
+    printf("chinos(%d): %s\n", n, res);
+    assert(str_eq(res, esperado));
+    free(res);
+}
 
 int main() {
     imprimir_titulo("Tests para la mafia china");
-    chinos(4); // Test propuesto
-    printf("\n");
-    chinos(0); //Test adicional
-    printf("\n");
-    chinos(1); //Test adicional
-    printf("\n");
-    chinos(10); //Test adicional
-    printf("\n");
-    chinos (15); //Test adicional
-    printf("\n");
+
+    probar(1, "(-.-)");
+    probar(2, "(-.(-.-).-)");
+    probar(3, "(-.(-.(-.-).-).-)");
+    probar(4, "(-.(-.(-.(-.-).-).-).-)");
+    probar(5, "(-.(-.(-.(-.(-.-).-).-).-).-)");
+    probar(6, "(-.(-.(-.(-.(-.(-.-).-).-).-).-).-)");
+    probar(7, "(-.(-.(-.(-.(-.(-.(-.-).-).-).-).-).-).-)");
+
     return 0;
 }
