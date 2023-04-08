@@ -4,13 +4,19 @@
 #include "cadenas.h"
 #include "../recursividad.h"
 
+void probar (int n, int esperado){
+    int resultado = terminoSerieDeFibonacci(n);
+    printf("En la posicion %d de la serie de Fibonacci se encuentra el numero %d\n", n, resultado);
+    assert(int_eq(resultado, esperado));
+}
 int main() {
     imprimir_titulo("Tests para término de Fibonacci");
-
-    printf(" 3 ==> %d \n", terminoSerieDeFibonacci(3));
-    printf(" 6 ==> %d \n", terminoSerieDeFibonacci(6));
-    printf(" 1 ==> %d \n", terminoSerieDeFibonacci(1));
-    printf(" 2 ==> %d \n", terminoSerieDeFibonacci(2));
-
+    //Test propuestos
+    probar(6,8);
+    probar(1,1);
+    //Test adicionales
+    probar(3,2);
+    probar(2,1);
+    probar(10,55);
     return 0;
 }
