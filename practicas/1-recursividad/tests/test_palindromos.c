@@ -12,11 +12,11 @@ void probar (char *c, bool esperado){
 
 int main() {
     imprimir_titulo("Tests para palíndromos");
-    //Test propuestos
+    //Test propuestos (testear con letras en minuscula)
     probar("neuquen", true);
     probar("palindromo",false);
 
-    //Test adicionales
+    //Test adicionales (testear con letras en minuscula)
     probar("saippuakivikauppias", true);
     probar("isosai", false);
 
