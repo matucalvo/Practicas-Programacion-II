@@ -4,12 +4,21 @@
 #include "cadenas.h"
 #include "../recursividad.h"
 
+void probar (char *c, bool esperado){
+    bool resultado = esPalindromo(c);
+    printf("La palabra %s es palindromo? %s\n", c, resultado == 1? "Verdadero":"Falso");
+    assert(bool_eq(resultado,esperado));
+}
+
 int main() {
     imprimir_titulo("Tests para palíndromos");
+    //Test propuestos
+    probar("neuquen", true);
+    probar("palindromo",false);
 
-    printf(" 'saippuakivikauppias' ==> %d \n", esPalindromo("saippuakivikauppias"));
-    printf(" 'palindromo' ==> %d \n", esPalindromo("palindromo"));
-    printf(" 'isosai' ==> %d \n", esPalindromo("isosai"));
+    //Test adicionales
+    probar("saippuakivikauppias", true);
+    probar("isosai", false);
 
     return 0;
 }
