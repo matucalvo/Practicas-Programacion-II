@@ -26,12 +26,12 @@ int main() {
     imprimir_titulo("Tests para agregarSeparadorMiles");
 
     char numero[] = "123456"; // numero a agregarle puntos
-    char numero1[] = "12345678";
+    char numero1[] = "1234567";
     char numero2[] = "67389219";
     char numero3[] = "567";
 
     char numeroConPuntos[] = "123.456"; // numero esperado
-    char numeroConPuntos1[] = "12.345.678";
+    char numeroConPuntos1[] = "1.234.567";
     char numeroConPuntos2[] = "67.389.219";
     char numeroConPuntos3[] = "567";
 

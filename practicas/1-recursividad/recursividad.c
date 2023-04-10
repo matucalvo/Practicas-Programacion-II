@@ -197,12 +197,16 @@ char *agregarSeparadorMiles(char *numero){
     int *contadorCadenaAux = 0;
     int *contadorCadenaOriginal = 0;
     int *largoaux = 0;
+    int largo_total = largo + (largo/3);
 
     largo = strlen(numero);
 
     char *numeroAux = (char*) malloc(sizeof(char) * (largo + (largo/3)));
 
+    
+
     agregarSeparadorMilesAux(numero,largo, numeroAux,&contadorCadenaAux,&contadorCadenaOriginal,&largoaux);
+
 
     return numeroAux;
 }
