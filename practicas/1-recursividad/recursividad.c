@@ -204,8 +204,6 @@ char *agregarSeparadorMiles(char *numero){
 
     agregarSeparadorMilesAux(numero,largo, numeroAux,&contadorCadenaAux,&contadorCadenaOriginal,&largoaux);
 
-   // numeroAux[largo+2] = "\0";
-
     return numeroAux;
 }
 
