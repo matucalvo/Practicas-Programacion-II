@@ -41,6 +41,8 @@ char* ondaDigitalAux(char *onda, int *size, char **ondaAux);
 
 int cant_caracteres(char* onda);
 
+void agregarSeparadorMilesAux(char *numero, int largo, char* numeroAux, int* contadorCadenaAux, int* contadorCadenaOriginal, int *largoaux);
+
 //  --------------------------------------------------
 
 
@@ -185,6 +187,107 @@ int restoRecursivo(int dividendo, int divisor){
 
 
 // ------------- PUNTO 5 ---------------- //
+
+
+// ------------- PUNTO 6 ---------------- //
+
+
+char *agregarSeparadorMiles(char *numero){
+    int largo;
+    int *contadorCadenaAux = 0;
+    int *contadorCadenaOriginal = 0;
+    int *largoaux = 0;
+
+    largo = strlen(numero);
+
+    char *numeroAux = (char*) malloc(sizeof(char) * (largo + (largo/3)));
+
+    agregarSeparadorMilesAux(numero,largo, numeroAux,&contadorCadenaAux,&contadorCadenaOriginal,&largoaux);
+
+    numeroAux[largo+2] = "\0";
+
+    return numeroAux;
+}
+
+void agregarSeparadorMilesAux(char *numero, int largo, char* numeroAux, int* contadorCadenaAux, int* contadorCadenaOriginal, int *largoaux){
+
+    
+   if (largo > 3) {    // si el largo del numero es mayor a 3, se necesita poner puntos
+       agregarSeparadorMilesAux(numero, largo - 3, numeroAux,contadorCadenaAux,contadorCadenaOriginal,largoaux);   // llamada recursiva restandole 3 al largo hasta q sea menor que 3
+       numeroAux[*contadorCadenaAux] ='.';
+       *contadorCadenaAux += 1;    //contador para saber el final de la cadena que voy cargando
+       *largoaux += 1;  // contador para saber cuantos puntos se le agrego a la cadena
+        largo = largo + *largoaux;       
+    }
+   for (int i = *contadorCadenaAux; i < largo; i++) {         // una vez q es menor que 3, carga los numeros hasta q se tenga q poner un punto
+        numeroAux[i] = numero[*contadorCadenaOriginal];       // asigno a la nueva cadena los elementos de la anterior
+        *contadorCadenaOriginal += 1;                 //contador para saber la posicion exacta del numero q tengo que cargar de la cadena original
+        *contadorCadenaAux += 1;           //contador para saber el final de la cadena que voy cargando
+   }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ------------- PUNTO 6 ---------------- //
+
+
+
 
 // ------------ PUNTO 7 ---------------- //
 
