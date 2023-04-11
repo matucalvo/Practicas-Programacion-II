@@ -2,6 +2,6 @@
 
 - Mateo Valentin Calvo (182857)
 
-- Martin Campos (182837)
+- Martin Campos 
 
-- Nahuel Cueto
+- Nahuel Cueto (182837)
