@@ -10,6 +10,7 @@
 void probar(char *numero, char *esperado){
     char *res = agregarSeparadorMiles(numero);
 
+
     printf("Cadena: %s --> %s", numero, res);
 
     assert(str_eq(res, esperado));

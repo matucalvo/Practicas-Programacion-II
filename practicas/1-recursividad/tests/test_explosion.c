@@ -6,10 +6,12 @@
 #include "../recursividad.h"
 
 
-void probar(int n, int b, int *esperado){
+void probar(int n, int b, int *esperado, int largo){
     int i;
     int size = 0;
     int * res = explosion(n,b,&size);
+
+
     printf("fragmentos(%d,%d):", n, b);
 
     for (i = 0; i < size; i++)
@@ -17,10 +19,12 @@ void probar(int n, int b, int *esperado){
         printf(" %d ", res[i]);
     }
 
+    int largo_esperado = largo / sizeof(esperado[0]);
+
     
     
 
-    int_array_eq(res,esperado,sizeof(res),sizeof(esperado));
+    int_array_eq(res,esperado,size,largo_esperado);
 
 
 
@@ -37,9 +41,13 @@ int main() {
 
 // tests propuestos
 
-    probar(20,5,arreglo1);
+
+
+    probar(10,3,arreglo2, sizeof(arreglo2));
     printf("\n");
-    probar(10,3,arreglo2);
+    probar(20,5,arreglo1, sizeof(arreglo1));
+    printf("\n");
+    
     
 
    
