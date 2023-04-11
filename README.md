@@ -1,2 +1,7 @@
-# template
-Repositorio a tomar como punto de partida para las prácticas de los alumnos
+Integrantes:
+
+- Mateo Valentin Calvo
+
+- Martin Campos
+
+- Nahuel Cueto
