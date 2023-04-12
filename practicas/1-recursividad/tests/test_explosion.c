@@ -9,7 +9,7 @@
 void probar(int n, int b, int *esperado, int largo){
     int i;
     int size = 0;
-    int * res = explosion(n,b,&size);
+    int *res = explosion(n,b,&size);  // guardo los fragmentos en res
 
 
     printf("fragmentos(%d,%d):", n, b);
@@ -19,16 +19,16 @@ void probar(int n, int b, int *esperado, int largo){
         printf(" %d ", res[i]);
     }
 
-    int largo_esperado = largo / sizeof(esperado[0]);
+    int largo_esperado = largo / sizeof(esperado[0]);   //calculo el largo esperado 
 
     
     
 
-    int_array_eq(res,esperado,size,largo_esperado);
+    assert(int_array_eq(res,esperado,size,largo_esperado));    //testeo
 
 
 
-    free(res);
+    free(res);  //libero memoria reservada
 
 
 }
