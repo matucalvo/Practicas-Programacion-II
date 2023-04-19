@@ -28,5 +28,34 @@ Lista invertirLista(Lista l){
 
     return ListaInvertida;
 
+}
+
+/// EJERCICIO ENCONTRAR MENOR DE LA LISTA ///
+
+struct ElementoYPosicion menorYPosicion(Lista l){
+
+    int elementoMenor = 10000;
+    int posicion = 0;
+
+    Iterador ite = iterador(l);
+    TipoElemento te;
+
+    struct ElementoYPosicion elypos;
+
+    elypos.valor = 1000;
+    posicion = 0;
+
+    while (hay_siguiente(ite)){
+        te = siguiente(ite);
+        posicion++;
+        if (te->clave < elypos.valor){
+            elypos.valor = te->clave;
+            elypos.ordinal = posicion;
+        }
+
+    }
+
+    return elypos;
+
 
 }

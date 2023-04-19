@@ -15,11 +15,11 @@ void probar(Lista listaAinvertir, Lista ListaEsperada){
     printf("\n");
     printf("Lista invertida: ");
     l_mostrar(res);
-    
-    
 
-
+    
     assert(listas_eq(res, ListaEsperada));
+
+    free(res);
 }
 
 
@@ -44,6 +44,13 @@ int main() {
     probar(listaAinvertir, listaInvertida);
     printf("\n");
     probar(listaAinvertir1, listaInvertida1);
+
+
+    free(listaAinvertir);
+    free(listaAinvertir1);
+    free(listaInvertida);
+    free(listaInvertida1);
+
 
 
 
