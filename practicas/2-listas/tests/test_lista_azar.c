@@ -3,13 +3,23 @@
 #include "tipo_elemento.h"
 #include "listas/listas.h"
 #include "cadenas.h"
+#include "util_listas.h"
+#include "aserciones.h"
+#include <assert.h>
+#include <stdlib.h>
 
 
 
 int main() {
     imprimir_titulo("Tests para generar números al azar únicos en una lista");
 
-    l_mostrar(numerosAlAzar(3));
+    Lista l = numerosAlAzar(3);
+
+    l_mostrar(l);
+
+    free(l);
+
+
     
 
 
