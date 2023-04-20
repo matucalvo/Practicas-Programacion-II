@@ -137,3 +137,32 @@ Lista numerosAlAzar(int cantidad){
     
 }
 
+/// EJERCICIO ESPEJITO ///
+
+Lista reflejarLista(Lista l, bool ultimoDoble){
+    Lista l_reflejada = l_crear();
+    TipoElemento te;
+    Iterador ite = iterador(l);
+
+        while (hay_siguiente(ite)){     //primero agrego los elementos de la lista original, a la q voy a reflejar
+            te = siguiente(ite);
+            l_agregar(l_reflejada, te);
+        }
+
+        int FinLista = (l_longitud(l_reflejada));
+
+        if (ultimoDoble == true){
+            for (int i = FinLista; i >= 1; i--)              // si es true, cargo la lista completa invertida 
+            {
+                te = l_recuperar(l_reflejada, i);
+                l_agregar(l_reflejada, te);
+            }   
+        } else 
+            for (int i = FinLista-1; i >= 1; i--)
+            {
+                te = l_recuperar(l_reflejada, i);   // si es false, cargo la lista completa-1 invertida
+                l_agregar(l_reflejada, te);
+            }  
+    
+}
+
