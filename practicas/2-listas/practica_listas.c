@@ -3,9 +3,11 @@
 #include <string.h>
 #include <math.h>
 
+
 #include "practica_listas.h"
 #include "tipo_elemento.h"
 #include "listas/listas.h"
+
 
 
 
@@ -114,5 +116,24 @@ double promedio(Lista l){
     prom = suma / l_longitud(l);
 
     return prom;
+}
+
+
+/// EJERCICIO LISTA AL AZAR ///
+
+Lista numerosAlAzar(int cantidad){
+    Lista l = l_crear();
+    TipoElemento te;
+
+    srand(time(NULL));
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        te = te_crear(rand() % 100);
+        l_agregar(l, te);
+    }
+
+    return l;
+    
 }
 
