@@ -34,7 +34,7 @@ Lista invertirLista(Lista l){
 
 struct ElementoYPosicion menorYPosicion(Lista l){
 
-    int elementoMenor = 10000;
+    
     int posicion = 0;
 
     Iterador ite = iterador(l);
@@ -43,7 +43,7 @@ struct ElementoYPosicion menorYPosicion(Lista l){
     struct ElementoYPosicion elypos;
 
     elypos.valor = 1000;
-    posicion = 0;
+
 
     while (hay_siguiente(ite)){
         te = siguiente(ite);
@@ -57,5 +57,44 @@ struct ElementoYPosicion menorYPosicion(Lista l){
 
     return elypos;
 
+}
+
+/// EJERCICIO ENCONTRAR MAYOR DE LA LISTA ///
+
+int Ocurrencias(Lista l, int valor){
+    int ocurrencias = 0;
+    Iterador ite = iterador(l);
+    TipoElemento te;
+
+    while (hay_siguiente(ite)){
+        te = siguiente(ite);
+        if (te->clave == valor){
+            ocurrencias++;
+        }
+    }
+    return ocurrencias;
+}
+
+struct ElementoYOcurrencias mayorYOcurrencias(Lista l){
+    int ocurrencias = 0;
+
+    Iterador ite = iterador(l);   // llamo al iterador pasandole la lista
+    TipoElemento te;
+
+    struct ElementoYOcurrencias elyocu;
+
+    elyocu.valor = 0;
+
+    while (hay_siguiente(ite)){
+        te = siguiente(ite);
+        if (te->clave > elyocu.valor){
+            elyocu.valor = te->clave;
+        }
+    }
+
+    elyocu.ocurrencias = Ocurrencias(l, elyocu.valor);
+
+    return elyocu;
 
 }
+
