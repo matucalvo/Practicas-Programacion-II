@@ -98,3 +98,21 @@ struct ElementoYOcurrencias mayorYOcurrencias(Lista l){
 
 }
 
+/// EJERCICIO PROMEDIO LISTA ///
+
+
+double promedio(Lista l){
+    Iterador ite = iterador(l);
+    TipoElemento te;
+    double prom = 0.0, suma = 0.0;
+
+    while (hay_siguiente(ite)){
+        te = siguiente(ite);
+        suma += te->clave;
+    }
+
+    prom = suma / l_longitud(l);
+
+    return prom;
+}
+
