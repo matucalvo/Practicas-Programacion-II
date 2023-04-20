@@ -118,6 +118,20 @@ double promedio(Lista l){
     return prom;
 }
 
+/// EJERCICIO CALCULAR MÚLTIPLOS///
+
+
+Lista multiplos(Lista l, int n){
+    Lista lista_multiplos = l_crear();
+
+    for (int i=0; i <= l_longitud(l); i++) {
+        if (l[i] % n == 0) {
+            l_agregar(lista_multiplos, l[i]);
+        }
+    }
+    return lista_multiplos;
+}
+
 
 /// EJERCICIO LISTA AL AZAR ///
 
