@@ -160,9 +160,12 @@ Lista reflejarLista(Lista l, bool ultimoDoble){
         } else 
             for (int i = FinLista-1; i >= 1; i--)
             {
-                te = l_recuperar(l_reflejada, i);   // si es false, cargo la lista completa-1 invertida
+                te = l_recuperar(l_reflejada, i);   // si es false, cargo la lista completa-1 invertida /
                 l_agregar(l_reflejada, te);
             }  
     
 }
+
+
+
 
