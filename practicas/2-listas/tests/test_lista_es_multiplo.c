@@ -18,7 +18,7 @@ void probarListas(Lista l, int n, Lista listaEsperada){
     printf("Lista multiplos: ");
     l_mostrar(l_multiplos);
 
-    assert(l_multiplos, listaEsperada);
+    assert(listas_eq(l_multiplos, listaEsperada));
 
     free(l_multiplos);
 }
