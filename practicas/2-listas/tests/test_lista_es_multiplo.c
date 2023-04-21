@@ -26,5 +26,18 @@ void probarListas(Lista l, int n, Lista listaEsperada){
 int main() {
     imprimir_titulo("Tests para determinar si una lista es múltiplo de otra");
 
+    int arreglo[] = {7, 6, 8, 1};
+    Lista l = crear_lista_desde_array(arreglo, 4);
+
+    int arreglo_esperado[] = {21, 18, 24, 3};
+    Lista listaEsperada = crear_lista_desde_array(arreglo_esperado, 4);
+
+    int multiplo = 3;
+
+    probarListas(l, multiplo, listaEsperada);
+
+    free(l);
+    free(listaEsperada);
+
     return 0;
 }
