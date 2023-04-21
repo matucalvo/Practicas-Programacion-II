@@ -123,11 +123,14 @@ double promedio(Lista l){
 
 Lista multiplos(Lista l, int n){
     Lista lista_multiplos = l_crear();
+    Iterador ite = iterador(l);
+    TipoElemento te = l_buscar(l, ite);
 
-    for (int i=0; i <= l_longitud(l); i++) {
-        if (l[i] % n == 0) {
-            l_agregar(lista_multiplos, l[i]);
+    while(hay_siguiente(ite)){
+        if (te % n == 0){
+            l_agregar(lista_multiplos, te);
         }
+        te = siguiente(ite);
     }
     return lista_multiplos;
 }
