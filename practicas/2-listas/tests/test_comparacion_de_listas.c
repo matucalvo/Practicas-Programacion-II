@@ -12,28 +12,5 @@
 int main() {
     imprimir_titulo("Tests para comparación de listas");
 
-    int numeros[] = {1,2,3,4,5};
-    Lista listanew = crear_lista_desde_array(numeros,5);
-    TipoElemento te = te_crear(1);
-
-    l_agregar(listanew, te);
-    
-
-   
-
-
-    l_insertar(listanew, te, 3);
-
-   
-
-    l_mostrar(listanew);
-
-    
-
-
-
-    
-
-
     return 0;
 }

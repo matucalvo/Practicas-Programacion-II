@@ -184,6 +184,39 @@ Lista reflejarLista(Lista l, bool ultimoDoble){
     
 }
 
+/// EJERCICIO COMPARAR LISTAS /// 
+
+enum Comparacion compararListas(Lista l1, Lista l2){
+    Iterador ite1 = iterador(l1); // Llamo al iterador para recorrer la lista 1
+    Iterador ite2 = iterador(l2); // Llamo al iterador para recorrer la lista 2
+    TipoElemento te1;
+    TipoElemento te2;
+    int valorL1, valorL2; // Creo dos valores para guarda el valor de la clave de cada lista para luego compararlas
+    int i;
+    int contador1 = 0; // Creo un contador para contar la cantidad de veces que la clave de la lista 1 es mayor a la clave de la lista 2
+    int contador2 = 0; // Creo un contador para contar la cantidad de veces que la clave de la lista 2 es mayor a la clave de la lista 1
+   /* while (hay_siguiente(ite1)){
+        te1 = hay_siguiente(ite1);
+        valorL1 = te1->clave;
+        while (hay_siguiente(ite2)){
+            te2 = hay_siguiente(ite2);
+            valorL2 = te2->clave;
+            if (valorL1 > valorL2)
+                contador1++;
+            else
+                contador2++;
+        }  
+    }*/
+    
+    if (contador1 > contador2)
+        return 1;
+    else if (contador1 < contador2)
+        return -1;
+    else
+        return 0;
+}
+
+
 
 
 
