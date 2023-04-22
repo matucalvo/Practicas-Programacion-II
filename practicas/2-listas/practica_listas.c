@@ -124,13 +124,17 @@ double promedio(Lista l){
 Lista multiplos(Lista l, int n){
     Lista lista_multiplos = l_crear();
     Iterador ite = iterador(l);
-    TipoElemento te = l_buscar(l, ite);
+    TipoElemento te;
+    
 
     while(hay_siguiente(ite)){
-        if (te % n == 0){
+        te = siguiente(ite);
+
+        if (te->clave % n == 0){
+            te->clave = te->clave/n;    // hago la division entre n con la clave
             l_agregar(lista_multiplos, te);
         }
-        te = siguiente(ite);
+        
     }
     return lista_multiplos;
 }
@@ -180,7 +184,68 @@ Lista reflejarLista(Lista l, bool ultimoDoble){
                 te = l_recuperar(l_reflejada, i);   // si es false, cargo la lista completa-1 invertida /
                 l_agregar(l_reflejada, te);
             }  
+
+            
     
+}
+
+
+/// EJERCICIO LISTA MULTIPLOS ///
+
+bool escalar(Lista l1, Lista l2, int *primerElemento){
+    TipoElemento teL1, teL2, primerElementoL1, primerElementoL2;
+    Iterador iteL1 = iterador(l1);
+    Iterador iteL2 = iterador(l2);
+    bool bandera = true;
+
+    primerElementoL1 = l_recuperar(l1,1);
+    primerElementoL2 = l_recuperar(l2,1);
+    *primerElemento = primerElementoL2->clave / primerElementoL1->clave;    // guardo la division del primer primeros valor
+
+    while (hay_siguiente(iteL1) && hay_siguiente(iteL2) && bandera){
+        teL1 = siguiente(iteL1);
+        teL2 = siguiente(iteL2);
+
+        if ((teL2->clave/teL1->clave) == *primerElemento){
+            bandera = true;
+        } else bandera = false;
+        
+    }
+
+    
+    return bandera;
+
+} 
+
+bool listaEsMultiplo(Lista l1, Lista l2){
+    bool condicion = true;
+    TipoElemento teL1,teL2;
+    Iterador iteL1 = iterador(l1);
+    Iterador iteL2 = iterador(l2);
+    int primerElemento = 0;
+
+    while ((hay_siguiente(iteL1) && hay_siguiente(iteL2)) && condicion){
+        teL1 = siguiente(iteL1);
+        teL2 = siguiente(iteL2);
+    
+        if (teL2->clave % teL1->clave  == 0){
+            condicion = true;
+        } else condicion = false;
+    }  
+
+    if (condicion){
+        if (escalar(l1,l2,&primerElemento) == true){
+            printf("%d es escalar de la lista \n", primerElemento);
+        }
+    }
+
+
+   
+
+
+
+    return condicion;
+
 }
 
 
