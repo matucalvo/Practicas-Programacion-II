@@ -195,25 +195,27 @@ enum Comparacion compararListas(Lista l1, Lista l2){
     int i;
     int contador1 = 0; // Creo un contador para contar la cantidad de veces que la clave de la lista 1 es mayor a la clave de la lista 2
     int contador2 = 0; // Creo un contador para contar la cantidad de veces que la clave de la lista 2 es mayor a la clave de la lista 1
-   /* while (hay_siguiente(ite1)){
-        te1 = hay_siguiente(ite1);
-        valorL1 = te1->clave;
-        while (hay_siguiente(ite2)){
-            te2 = hay_siguiente(ite2);
+    if (l_longitud(l1) == l_longitud(l2)){ // Si ambas listas son iguales, recorro las listas y comparo valor a valor
+        while (hay_siguiente(ite1) && hay_siguiente(ite2)){
+            te1 = siguiente(ite1);
+            te2 = siguiente(ite2);
+            valorL1 = te1->clave;
             valorL2 = te2->clave;
-            if (valorL1 > valorL2)
+            if (valorL1 > valorL2) // Si el valor de la clave de la lista 1 es mayor al de la lista 2, aumento el contador de lista 1
                 contador1++;
             else
-                contador2++;
-        }  
-    }*/
+                contador2++; // Si el valor de la clave de la lista 2 es mayor al de la lista 1, aumento el contador de lista 2
+        } 
+    }
+    else
+      printf("Error: Las listas son de distinto tamanio");
     
     if (contador1 > contador2)
-        return 1;
+        return MAYOR;
     else if (contador1 < contador2)
-        return -1;
+        return MENOR;
     else
-        return 0;
+        return IGUAL;
 }
 
 
