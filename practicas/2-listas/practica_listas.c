@@ -125,6 +125,7 @@ Lista multiplos(Lista l, int n){
     Lista lista_multiplos = l_crear();
     Iterador ite = iterador(l);
     TipoElemento te;
+<<<<<<< HEAD
     
 
     while(hay_siguiente(ite)){
@@ -135,6 +136,15 @@ Lista multiplos(Lista l, int n){
             l_agregar(lista_multiplos, te);
         }
         
+=======
+
+    while(hay_siguiente(ite)){
+        te = siguiente(ite);
+        if (te -> clave % n == 0){
+            te -> clave = te -> clave/n;
+            l_agregar(lista_multiplos, te);
+        }
+>>>>>>> 749508f0d18d05b822eef7fa8119b7a8021b051e
     }
     return lista_multiplos;
 }
@@ -188,6 +198,41 @@ Lista reflejarLista(Lista l, bool ultimoDoble){
             
     
 }
+
+/// EJERCICIO COMPARAR LISTAS /// 
+
+enum Comparacion compararListas(Lista l1, Lista l2){
+    Iterador ite1 = iterador(l1); // Llamo al iterador para recorrer la lista 1
+    Iterador ite2 = iterador(l2); // Llamo al iterador para recorrer la lista 2
+    TipoElemento te1;
+    TipoElemento te2;
+    int valorL1, valorL2; // Creo dos valores para guarda el valor de la clave de cada lista para luego compararlas
+    int i;
+    int contador1 = 0; // Creo un contador para contar la cantidad de veces que la clave de la lista 1 es mayor a la clave de la lista 2
+    int contador2 = 0; // Creo un contador para contar la cantidad de veces que la clave de la lista 2 es mayor a la clave de la lista 1
+    if (l_longitud(l1) == l_longitud(l2)){ // Si ambas listas son iguales, recorro las listas y comparo valor a valor
+        while (hay_siguiente(ite1) && hay_siguiente(ite2)){
+            te1 = siguiente(ite1);
+            te2 = siguiente(ite2);
+            valorL1 = te1->clave;
+            valorL2 = te2->clave;
+            if (valorL1 > valorL2) // Si el valor de la clave de la lista 1 es mayor al de la lista 2, aumento el contador de lista 1
+                contador1++;
+            else
+                contador2++; // Si el valor de la clave de la lista 2 es mayor al de la lista 1, aumento el contador de lista 2
+        } 
+    }
+    else
+      printf("Error: Las listas son de distinto tamanio");
+    
+    if (contador1 > contador2)
+        return MAYOR;
+    else if (contador1 < contador2)
+        return MENOR;
+    else
+        return IGUAL;
+}
+
 
 
 /// EJERCICIO LISTA MULTIPLOS ///
