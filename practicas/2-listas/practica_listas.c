@@ -125,18 +125,6 @@ Lista multiplos(Lista l, int n){
     Lista lista_multiplos = l_crear();
     Iterador ite = iterador(l);
     TipoElemento te;
-<<<<<<< HEAD
-    
-
-    while(hay_siguiente(ite)){
-        te = siguiente(ite);
-
-        if (te->clave % n == 0){
-            te->clave = te->clave/n;    // hago la division entre n con la clave
-            l_agregar(lista_multiplos, te);
-        }
-        
-=======
 
     while(hay_siguiente(ite)){
         te = siguiente(ite);
@@ -144,7 +132,6 @@ Lista multiplos(Lista l, int n){
             te -> clave = te -> clave/n;
             l_agregar(lista_multiplos, te);
         }
->>>>>>> 749508f0d18d05b822eef7fa8119b7a8021b051e
     }
     return lista_multiplos;
 }
@@ -194,8 +181,6 @@ Lista reflejarLista(Lista l, bool ultimoDoble){
                 te = l_recuperar(l_reflejada, i);   // si es false, cargo la lista completa-1 invertida /
                 l_agregar(l_reflejada, te);
             }  
-
-            
     
 }
 
@@ -232,7 +217,6 @@ enum Comparacion compararListas(Lista l1, Lista l2){
     else
         return IGUAL;
 }
-
 
 
 /// EJERCICIO LISTA MULTIPLOS ///
