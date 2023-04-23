@@ -277,6 +277,29 @@ bool listaEsMultiplo(Lista l1, Lista l2){
 
 }
 
-
+/// EJERCICIO SUBLISTAS ///
+bool subLista(Lista l1, Lista l2){
+    Iterador ite1 = iterador(l1);
+    Iterador ite2 = iterador(l2);
+    TipoElemento teL1, teL2;
+    int valor1, valor2;
+    bool encontrado;
+    while (hay_siguiente(ite2)){ // Comienzo tomando el valor de la sublista para compararlo con el valor de la lista principal
+        teL2 = siguiente(ite2);
+        valor2 = teL2->clave;
+        while (hay_siguiente(ite1)){ // Primero recorro la lista principal en su totalidad buscando el valor obtenido de la sublista
+            teL1 = siguiente(ite1);
+            valor1 = teL1->clave;
+            if (valor2 == valor1){
+                encontrado = true;
+                ite1 = iterador(l1); // Reinicio el iterador para comenzar a evaluar la lista desde la posicion inicial
+                break;
+            }
+            else
+                encontrado = false;
+        }
+    }
+    return encontrado;
+}
 
 

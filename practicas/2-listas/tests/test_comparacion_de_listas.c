@@ -27,6 +27,8 @@ int main() {
     Lista l2 = crear_lista_desde_array(arreglo2,4);
     int arreglo3[] = {1, 6, 28, 2};
     Lista l3 = crear_lista_desde_array(arreglo3,4);
+    int arreglo4[] = {10, 26, 28, 22};
+    Lista l4 = crear_lista_desde_array(arreglo4,4);
 
     // Test 1//
     probar (l1,l2,MENOR);
@@ -34,10 +36,17 @@ int main() {
     probar (l1,l3,IGUAL);
     // Test 3 //
     probar (l2,l3,MAYOR); 
+    // Test 4 adicional //
+    probar (l1,l4,MENOR);
+    // Test 5 adicional //
+    probar (l2,l4,MENOR);
+    // Test 6 adicional //
+    probar (l3,l4,MENOR);
 
     free (l1);
     free (l2);
     free (l3);
+    free (l4);
 
     return 0;
 }
