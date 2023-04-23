@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include "aserciones.h"
 
 void probar (Lista l1, Lista l2, int esperado){
     int resultado = compararListas(l1,l2);
