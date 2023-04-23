@@ -128,10 +128,8 @@ Lista multiplos(Lista l, int n){
 
     while(hay_siguiente(ite)){
         te = siguiente(ite);
-        //if (te -> clave % n == 0){
-            te -> clave = te -> clave*n;
-            l_agregar(lista_multiplos, te);
-        //}
+        te -> clave = te -> clave * n;
+        l_agregar(lista_multiplos, te);
     }
     return lista_multiplos;
 }
