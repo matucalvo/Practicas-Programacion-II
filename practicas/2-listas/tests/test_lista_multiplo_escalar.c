@@ -20,6 +20,8 @@ void probar(Lista l1, Lista l2, bool esperado){
 
 
     assert(bool_eq(res,esperado));
+
+    
         
 
 }

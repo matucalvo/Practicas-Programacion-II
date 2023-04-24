@@ -241,6 +241,9 @@ bool escalar(Lista l1, Lista l2, int *primerElemento){
         
     }
 
+    free(iteL1);
+    free(iteL2);
+
     
     return bandera;
 
@@ -268,14 +271,61 @@ bool listaEsMultiplo(Lista l1, Lista l2){
         }
     }
 
-
-   
+    free(iteL1);
+    free(iteL2);
 
 
 
     return condicion;
 
 }
+
+
+/// EJERCICIO TAD POLINOMIO ///
+
+double evaluar(struct Polinomio p, double x){
+    Iterador ite = iterador(p.coeficientes);
+    TipoElemento te;
+    double sum = 0.0;
+    int acumulador = 0;
+
+    while (hay_siguiente(ite)){
+        te = siguiente(ite);
+        sum += te->clave * pow(x, acumulador);
+        acumulador++;
+
+    }
+
+    free(ite);
+
+    return sum;
+
+}
+
+
+Lista valores(struct Polinomio p, int desde, int hasta, double paso){
+    Lista res = l_crear();
+    double valor;
+    struct PuntoXY *puntoxy;
+
+
+    double i = desde;
+
+    while (i <= hasta){
+        valor = evaluar(p, i);
+        puntoxy = malloc(sizeof(struct PuntoXY));
+        puntoxy->x = i;
+        puntoxy->y = valor;
+        l_agregar(res, te_crear_con_valor(0,puntoxy));
+        i += paso;
+    }
+
+
+
+    return res;
+}
+
+
 
 /// EJERCICIO SUBLISTAS ///
 bool subLista(Lista l1, Lista l2){
