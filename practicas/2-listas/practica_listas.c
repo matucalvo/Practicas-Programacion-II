@@ -28,6 +28,8 @@ Lista invertirLista(Lista l){
         l_agregar(ListaInvertida,te);
     }
 
+    l_mostrar(ListaInvertida);
+
     return ListaInvertida;
 
 }
@@ -126,11 +128,15 @@ Lista multiplos(Lista l, int n){
     Iterador ite = iterador(l);
     TipoElemento te;
 
+
     while(hay_siguiente(ite)){
-        te = siguiente(ite);
-        te -> clave = te -> clave * n;
-        l_agregar(lista_multiplos, te);
+        te = siguiente(ite); 
+        TipoElemento te1 = te_crear(0);
+        te1->clave = te->clave * n;
+        l_agregar(lista_multiplos, te1);
+
     }
+
     return lista_multiplos;
 }
 
@@ -351,6 +357,8 @@ bool subLista(Lista l1, Lista l2){
 
 
 /// EJERCICIO CONJUNTOS QUE SUMAN N ///
+
+
 
 
 

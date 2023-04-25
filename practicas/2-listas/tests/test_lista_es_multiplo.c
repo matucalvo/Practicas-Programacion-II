@@ -32,9 +32,9 @@ int main() {
     int arreglo_esperado[] = {21, 18, 24, 3};
     Lista listaEsperada = crear_lista_desde_array(arreglo_esperado, 4);
 
-    int multiplo = 3;
+    
 
-    probarListas(l, multiplo, listaEsperada);
+    probarListas(l, 3, listaEsperada);
 
     free(l);
     free(listaEsperada);
