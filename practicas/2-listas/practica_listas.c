@@ -141,8 +141,6 @@ Lista numerosAlAzar(int cantidad){
     Lista l = l_crear();
     TipoElemento te;
 
-    srand(time(NULL));
-
     for (int i = 0; i < cantidad; i++)
     {
         te = te_crear(rand() % 100);

@@ -12,8 +12,10 @@
 
 int main() {
     imprimir_titulo("Tests para generar números al azar únicos en una lista");
+    srand(getpid());
 
     Lista l = numerosAlAzar(3);
+
 
     l_mostrar(l);
 
