@@ -13,7 +13,7 @@ void probarListas(Lista l, int n, Lista listaEsperada){
     Lista l_multiplos = multiplos(l, n);
 
     printf("Lista suministrada: ");
-    l_mostrar(l);
+    l_mostrar(l); //Error al mostrar la lista, no encontramos el porque muestra la lista resultado
 
     printf("Lista multiplos: ");
     l_mostrar(l_multiplos);
