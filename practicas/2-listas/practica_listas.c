@@ -201,19 +201,18 @@ enum Comparacion compararListas(Lista l1, Lista l2){
             valorL2 = te2->clave;
             if (valorL1 > valorL2) // Si el valor de la clave de la lista 1 es mayor al de la lista 2, aumento el contador de lista 1
                 contador1++;
-            else
+            else if (valorL2 > valorL1)
                 contador2++; // Si el valor de la clave de la lista 2 es mayor al de la lista 1, aumento el contador de lista 2
         } 
+        
+        if (contador1 > contador2)
+            return MAYOR;
+        else if (contador1 < contador2)
+            return MENOR;
+        else if (contador1 == contador2)
+            return IGUAL;
     }
-    else
-      printf("Error: Las listas son de distinto tamanio");
-    
-    if (contador1 > contador2)
-        return MAYOR;
-    else if (contador1 < contador2)
-        return MENOR;
-    else
-        return IGUAL;
+
 }
 
 
