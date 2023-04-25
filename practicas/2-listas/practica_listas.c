@@ -28,8 +28,6 @@ Lista invertirLista(Lista l){
         l_agregar(ListaInvertida,te);
     }
 
-    l_mostrar(ListaInvertida);
-
     return ListaInvertida;
 
 }
@@ -128,15 +126,11 @@ Lista multiplos(Lista l, int n){
     Iterador ite = iterador(l);
     TipoElemento te;
 
-
     while(hay_siguiente(ite)){
-        te = siguiente(ite); 
-        TipoElemento te1 = te_crear(0);
-        te1->clave = te->clave * n;
-        l_agregar(lista_multiplos, te1);
-
+        te = siguiente(ite);
+        te -> clave = te -> clave * n;
+        l_agregar(lista_multiplos, te);
     }
-
     return lista_multiplos;
 }
 
@@ -328,8 +322,6 @@ Lista valores(struct Polinomio p, int desde, int hasta, double paso){
     return res;
 }
 
-
-
 /// EJERCICIO SUBLISTAS ///
 bool subLista(Lista l1, Lista l2){
     Iterador ite1 = iterador(l1);
@@ -353,13 +345,11 @@ bool subLista(Lista l1, Lista l2){
         }
     }
     return encontrado;
+
+    /*-La complejidad algoritmica de este algoritmo podría ser O(n*m) en el mejor de los casos, donde las listas posean tamaños distintos,
+    pero considerando que se debe tener en cuenta el peor escenario donde ambas listas sean del mismo tamaño, la complejidad algoritma
+    de este algoritmo es O(n^2)-*/    
+
 }
-
-
-/// EJERCICIO CONJUNTOS QUE SUMAN N ///
-
-
-
-
 
 

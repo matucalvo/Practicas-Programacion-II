@@ -41,7 +41,7 @@ int main() {
     probar (l1,l3,IGUAL);
     // Test 3 //
     probar (l2,l3,MAYOR); 
-    // Test 4 adicional //
+    // Test 4 adicional // Test utilizado para comprobar que sucede si las listas poseen distintos tamaños y mostrar el Error
     //probar (l1,l4,IGUAL); // Para mostrar correctamente el error debería modificar el enum y agregar un nuevo valor para "ERROR"
 
     free (l1);
