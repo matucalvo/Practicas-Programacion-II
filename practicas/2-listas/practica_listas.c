@@ -32,6 +32,11 @@ Lista invertirLista(Lista l){
 
 }
 
+/* Complejidad de InvertirLista en implementacion arreglos = 0(n)
+   Complejidad de InvertirLista en impletentacion cursores = 0(n^3)
+   Complejidad de InvertirLista en implementacion punteros = 0(n^3) */
+     
+
 /// EJERCICIO ENCONTRAR MENOR DE LA LISTA ///
 
 struct ElementoYPosicion menorYPosicion(Lista l){
@@ -61,6 +66,10 @@ struct ElementoYPosicion menorYPosicion(Lista l){
 
 }
 
+/* Complejidad de EncontrarMenor en implementacion arreglos = 0(n)
+   Complejidad de EncontrarMenor en impletentacion cursores = 0(n)
+   Complejidad de EncontrarMenor en implementacion punteros = 0(n) */
+
 /// EJERCICIO ENCONTRAR MAYOR DE LA LISTA ///
 
 int Ocurrencias(Lista l, int valor){
@@ -76,6 +85,7 @@ int Ocurrencias(Lista l, int valor){
     }
     return ocurrencias;
 }
+
 
 struct ElementoYOcurrencias mayorYOcurrencias(Lista l){
     int ocurrencias = 0;
@@ -100,6 +110,10 @@ struct ElementoYOcurrencias mayorYOcurrencias(Lista l){
 
 }
 
+/* Complejidad de EncontrarMayorYOcurrencias en implementacion arreglos = 0(n)
+   Complejidad de EncontrarMayorYOcurrencias en impletentacion cursores = 0(n)
+   Complejidad de EncontrarMayorYOcurrencias en implementacion punteros = 0(n) */
+
 /// EJERCICIO PROMEDIO LISTA ///
 
 
@@ -118,6 +132,12 @@ double promedio(Lista l){
     return prom;
 }
 
+/* Complejidad de Promedio en implementacion arreglos = 0(n)
+   Complejidad de Promedio en impletentacion cursores = 0(n)
+   Complejidad de Promedio en implementacion punteros = 0(n) */
+
+
+
 /// EJERCICIO CALCULAR MÚLTIPLOS///
 
 
@@ -133,6 +153,10 @@ Lista multiplos(Lista l, int n){
     }
     return lista_multiplos;
 }
+
+/* Complejidad de Multiplos en implementacion arreglos = 0(n)
+   Complejidad de Multiplos en impletentacion cursores = 0(n^2)
+   Complejidad de Multiplos en implementacion punteros = 0(n^2) */
 
 
 /// EJERCICIO LISTA AL AZAR ///
@@ -150,6 +174,10 @@ Lista numerosAlAzar(int cantidad){
     return l;
     
 }
+
+/* Complejidad de numerosAlAzar en implementacion arreglos = 0(n)
+   Complejidad de numerosAlAzar en impletentacion cursores = 0(n^2)
+   Complejidad de numerosAlAzar en implementacion punteros = 0(n^2) */
 
 /// EJERCICIO ESPEJITO ///
 
@@ -179,6 +207,13 @@ Lista reflejarLista(Lista l, bool ultimoDoble){
             }  
     
 }
+
+/* Complejidad de reflejarLista en implementacion arreglos = 0(n)
+   Complejidad de reflejarLista en impletentacion cursores = 0(n^3)
+   Complejidad de reflejarLista en implementacion punteros = 0(n^3) */
+
+
+
 
 /// EJERCICIO COMPARAR LISTAS /// 
 
@@ -212,6 +247,10 @@ enum Comparacion compararListas(Lista l1, Lista l2){
     }
 
 }
+
+/* Complejidad de compararListas en implementacion arreglos = 0(n)
+   Complejidad de compararListas en impletentacion cursores = 0(n)
+   Complejidad de compararListas en implementacion punteros = 0(n) */
 
 
 /// EJERCICIO LISTA MULTIPLOS ///
@@ -275,6 +314,10 @@ bool listaEsMultiplo(Lista l1, Lista l2){
 
 }
 
+/* Complejidad de listaEsMultiplo en implementacion arreglos = 0(n)
+   Complejidad de listaEsMultiplo en impletentacion cursores = 0(n)
+   Complejidad de listaEsMultiplo en implementacion punteros = 0(n) */
+
 
 /// EJERCICIO TAD POLINOMIO ///
 
@@ -296,6 +339,10 @@ double evaluar(struct Polinomio p, double x){
     return sum;
 
 }
+
+/* Complejidad de evaluar en implementacion arreglos = 0(n)
+   Complejidad de evaluar en impletentacion cursores = 0(n)
+   Complejidad de evaluar en implementacion punteros = 0(n) */
 
 
 Lista valores(struct Polinomio p, int desde, int hasta, double paso){
@@ -319,6 +366,10 @@ Lista valores(struct Polinomio p, int desde, int hasta, double paso){
 
     return res;
 }
+
+/* Complejidad de valores en implementacion arreglos = 0(n^2)
+   Complejidad de valores en impletentacion cursores = 0(n^3)
+   Complejidad de valores en implementacion punteros = 0(n^3) */
 
 /// EJERCICIO SUBLISTAS ///
 bool subLista(Lista l1, Lista l2){
@@ -344,9 +395,9 @@ bool subLista(Lista l1, Lista l2){
     }
     return encontrado;
 
-    /*-La complejidad algoritmica de este algoritmo podría ser O(n*m) en el mejor de los casos, donde las listas posean tamaños distintos,
-    pero considerando que se debe tener en cuenta el peor escenario donde ambas listas sean del mismo tamaño, la complejidad algoritma
-    de este algoritmo es O(n^2)-*/    
+    /* Complejidad de sublista en implementacion arreglos = 0(n^2)
+       Complejidad de subLista en impletentacion cursores = 0(n^2)
+       Complejidad de subLista en implementacion punteros = 0(n^2) */   
 
 }
 
