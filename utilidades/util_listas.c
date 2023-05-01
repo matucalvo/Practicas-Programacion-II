@@ -4,6 +4,7 @@
 #include "tipo_elemento.h"
 #include "listas/listas.h"
 
+
 Lista crear_lista_desde_array(int *vector, int tamano) {
     Lista l = l_crear();
 
@@ -41,3 +42,5 @@ char *lista_como_string(Lista lista, char *(*toStringTipoElemento)(TipoElemento 
     result[strlen(result) - 1] = '\0';
     return result;
 }
+
+

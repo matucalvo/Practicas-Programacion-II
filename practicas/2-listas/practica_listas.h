@@ -20,7 +20,7 @@ struct ElementoYOcurrencias {
 
 struct ElementoYOcurrencias mayorYOcurrencias(Lista l);
 
-double promedio(Lista l);
+double promedio(Lista l, int i, double suma);
 
 Lista numerosAlAzar(int cantidad);
 

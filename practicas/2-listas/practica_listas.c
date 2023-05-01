@@ -117,19 +117,18 @@ struct ElementoYOcurrencias mayorYOcurrencias(Lista l){
 /// EJERCICIO PROMEDIO LISTA ///
 
 
-double promedio(Lista l){
-    Iterador ite = iterador(l);
+double promedio(Lista l, int i, double suma){
     TipoElemento te;
-    double prom = 0.0, suma = 0.0;
-
-    while (hay_siguiente(ite)){
-        te = siguiente(ite);
+    if (i >= l_longitud(l)){
+        return (suma/i);
+    }
+    else{
+        i++;
+        te = l_recuperar(l,i);
         suma += te->clave;
+        promedio(l, i, suma);
     }
 
-    prom = suma / l_longitud(l);
-
-    return prom;
 }
 
 /* Complejidad de Promedio en implementacion arreglos = 0(n)

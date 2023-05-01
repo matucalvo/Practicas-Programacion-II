@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 void probar(Lista l, double promedioEsperado){
-    double res = promedio(l);
+    double res = promedio(l,0,0.0);
 
     l_mostrar(l);
     printf("Promedio: %f", res);
@@ -29,3 +29,5 @@ int main() {
 
     return 0;
 }
+
+
