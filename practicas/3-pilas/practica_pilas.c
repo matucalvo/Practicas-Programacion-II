@@ -21,6 +21,23 @@ void intercambiarP(Pila pila1, Pila pila2){
 }
 
 
+int longitudPila(Pila pila){
+    int i = 0;
+    Pila pilaAux = p_crear();
+    TipoElemento te;
+
+    while(!p_es_vacia(pila)){
+        te = p_desapilar(pila);
+        p_apilar(pilaAux,te);
+        i++;
+    }
+
+    intercambiarP(pilaAux,pila);
+
+    return i;
+}
+
+
 
 ////////////////////////////////////////
 
@@ -47,6 +64,26 @@ bool buscarElemento(Pila p, TipoElemento e){
 }
 
 void insertarElemento(Pila p, TipoElemento e, int pos) {
+    Pila pilaAux = p_crear();
+    TipoElemento te;
+
+    int posicion = (longitudPila(p) - pos) + 1;
+
+    for (int i = 1; i <= posicion; i++)
+    {
+        te = p_desapilar(p);   // desapilo hasta posicion
+        p_apilar(pilaAux,te);   // lo guardo en otra pila para no perder los elementos
+    }
+
+    p_apilar(p,e);   // inserto el nuevo elemento
+
+    while (!p_es_vacia(pilaAux)){
+        te = p_desapilar(pilaAux);   // vuelvo a cargar la pila
+        p_apilar(p,te);
+    }
+
+
+
 }
 
 void eliminarElemento(Pila p, int clave) {
