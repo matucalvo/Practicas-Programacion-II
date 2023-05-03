@@ -162,13 +162,29 @@ int contarElementos(Pila p) {
 }
 
 bool compararPilas(Pila p1, Pila p2) {
-    
+
 }
 
 char* cambioDeBase(int numero, int base) {
 }
 
 Pila invertirPila(Pila p) {
+    Pila pilaAux = p_crear();
+    Pila invertida = p_crear();
+    TipoElemento te;
+
+    while (!p_es_vacia(p)){
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+        p_apilar(invertida,te);
+    }
+
+    intercambiarP(pilaAux,p);
+
+    free(pilaAux);
+
+
+    return invertida;
 }
 
 Pila eliminarTodasOcurrencias(Pila p, int clave) {
