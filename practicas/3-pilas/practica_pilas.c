@@ -87,18 +87,82 @@ void insertarElemento(Pila p, TipoElemento e, int pos) {
 }
 
 void eliminarElemento(Pila p, int clave) {
+    Pila pilaAux = p_crear();
+    TipoElemento te;
+    bool condicion = true;
+
+    while (!p_es_vacia(p) && condicion){
+        te = p_desapilar(p);
+        if (te->clave != clave){
+            p_apilar(pilaAux,te);
+        } else condicion = false;
+    }
+
+    intercambiarP(pilaAux,p);
+
 }
 
 void intercambiarElementos(Pila p, int pos1, int pos2) {
+    Pila pilaAux = p_crear();
+    TipoElemento te, tePos1, tePos2;
+    int posicion1 = (longitudPila(p) - pos1)+1;
+    int posicion2 = (longitudPila(p) - pos2)+1;
+    int i = 0;
+
+    while (!p_es_vacia(p)){
+        i++;
+        if (i == posicion1){
+            tePos1 = p_desapilar(p);
+        } else if (i == posicion2){
+            tePos2 = p_desapilar(p);   
+        }
+        else{
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+        }
+    }
+
+    intercambiarP(pilaAux,p);
+    insertarElemento(p,tePos2,pos1);
+    insertarElemento(p,tePos1,pos2);
+    
 }
 
 Pila copiar(Pila p) {
+    Pila pilaAux = p_crear();
+    Pila copia = p_crear();
+    TipoElemento te;
+
+    while(!p_es_vacia(p)){
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+    }
+
+    intercambiarP(pilaAux,copia);
+
+    return copia;
+
+
 }
 
 int contarElementos(Pila p) {
+     int i = 0;
+    Pila pilaAux = p_crear();
+    TipoElemento te;
+
+    while(!p_es_vacia(p)){
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+        i++;
+    }
+
+    intercambiarP(pilaAux,p);
+
+    return i;
 }
 
 bool compararPilas(Pila p1, Pila p2) {
+    
 }
 
 char* cambioDeBase(int numero, int base) {
