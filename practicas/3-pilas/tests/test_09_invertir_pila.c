@@ -20,8 +20,9 @@ int main() {
     int numeros[] = {1, 6, 3, 7, 4, 8, 3};
 
     Pila pila = crear_pila_desde_array(numeros,7);
+    Pila invertida = invertirPila(pila);
 
-    p_mostrar(invertirPila(pila));
+    p_mostrar(invertida);
 
     return 0;
 }

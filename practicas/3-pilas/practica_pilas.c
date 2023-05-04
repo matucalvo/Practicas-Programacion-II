@@ -38,6 +38,23 @@ int longitudPila(Pila pila){
 }
 
 
+void invertirMismaPila(Pila p) {
+    Pila pilaAux = p_crear();
+    Pila invertida = p_crear();
+    TipoElemento te;
+
+    while (!p_es_vacia(p)){
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+        p_apilar(invertida,te);
+    }
+
+    intercambiarP(pilaAux,p);
+
+    free(pilaAux);
+ 
+}
+
 
 ////////////////////////////////////////
 
@@ -185,8 +202,6 @@ bool compararPilas(Pila p1, Pila p2) {
         } 
     }
 
-
-
     while(!p_es_vacia(pilaAux)){
         i++;
         if (i % 2 != 0){
@@ -199,9 +214,8 @@ bool compararPilas(Pila p1, Pila p2) {
 
     }
 
-    invertirPila(p1);
-    invertirPila(p2);
-
+    invertirMismaPila(p1);
+    invertirMismaPila(p2);
 
     return condicion;
 
@@ -211,25 +225,42 @@ char* cambioDeBase(int numero, int base) {
 }
 
 Pila invertirPila(Pila p) {
-    Pila pilaAux = p_crear();
     Pila invertida = p_crear();
     TipoElemento te;
 
     while (!p_es_vacia(p)){
         te = p_desapilar(p);
-        p_apilar(pilaAux,te);
         p_apilar(invertida,te);
     }
 
-    intercambiarP(pilaAux,p);
-
-    free(pilaAux);
-
-
+    
     return invertida;
 }
 
 Pila eliminarTodasOcurrencias(Pila p, int clave) {
+    Pila pilaAux = p_crear();
+    Pila pilaAux2 = p_crear();
+    TipoElemento te;
+
+    while (!p_es_vacia(p)){
+        te = p_desapilar(p);
+        if (te->clave != clave){
+            p_apilar(pilaAux,te);
+            p_apilar(pilaAux2,te);    
+        } else p_apilar(pilaAux2,te);
+    }
+
+    intercambiarP(pilaAux2,p);
+
+    
+
+
+    
+
+    
+
+
+    return invertirPila(pilaAux);
 }
 
 Pila elementosEnComun(Pila p1, Pila p2) {
