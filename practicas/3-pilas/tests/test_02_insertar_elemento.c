@@ -3,16 +3,7 @@
 #include "tipo_elemento.h"
 #include "pilas/pilas.h"
 #include "cadenas.h"
-
-Pila crear_pila_desde_array(int *vector, int tamano) {
-    Pila p = p_crear();
-
-    for (int i = 0; i < tamano; i++) {
-        p_apilar(p, te_crear(vector[i]));
-    }
-
-    return p;
-}
+#include "pilas/util_pilas.h"
 
 int main() {
     imprimir_titulo("Tests para insertar elemento");

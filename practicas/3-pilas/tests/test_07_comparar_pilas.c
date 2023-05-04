@@ -6,18 +6,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include "aserciones.h"
+#include "pilas/util_pilas.h"
 #include <stdlib.h>
-
-Pila crear_pila_desde_array(int *vector, int tamano) {
-    Pila p = p_crear();
-
-    for (int i = 0; i < tamano; i++) {
-        p_apilar(p, te_crear(vector[i]));
-    }
-
-    return p;
-}
-
 
 void probar(Pila pila1, Pila pila2, bool esperado){
     bool res = compararPilas(pila1,pila2);

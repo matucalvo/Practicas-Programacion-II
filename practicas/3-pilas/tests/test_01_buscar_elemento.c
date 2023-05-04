@@ -6,18 +6,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include "aserciones.h"
+#include "pilas/util_pilas.h"
 
-
-
-Pila crear_pila_desde_array(int *vector, int tamano) {
-    Pila p = p_crear();
-
-    for (int i = 0; i < tamano; i++) {
-        p_apilar(p, te_crear(vector[i]));
-    }
-
-    return p;
-}
 
 void probar (Pila p, TipoElemento te, bool Esperado){
     bool res = buscarElemento(p,te);
