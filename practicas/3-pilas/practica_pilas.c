@@ -162,6 +162,48 @@ int contarElementos(Pila p) {
 }
 
 bool compararPilas(Pila p1, Pila p2) {
+    Pila pilaAux = p_crear();
+    TipoElemento te, tep1, tep2;
+    int i = 0;
+    bool condicion = true;
+    
+
+
+    if (longitudPila(p1) != longitudPila(p2)){
+        return false;
+    }
+
+    while (!p_es_vacia(p1)){             // pregunto solo por 1, pq si llega a este if es pq son iguales las longitudes
+        tep1 = p_desapilar(p1);
+        tep2 = p_desapilar(p2);
+        p_apilar(pilaAux,tep1);
+        p_apilar(pilaAux,tep2);
+
+
+        if (tep1->clave != tep2->clave){
+            condicion = false;
+        } 
+    }
+
+
+
+    while(!p_es_vacia(pilaAux)){
+        i++;
+        if (i % 2 != 0){
+            te = p_desapilar(pilaAux);         // reconstruyo las pilas
+            p_apilar(p2, te);
+        } else {
+            te = p_desapilar(pilaAux);
+            p_apilar(p1,te);
+        }
+
+    }
+
+    invertirPila(p1);
+    invertirPila(p2);
+
+
+    return condicion;
 
 }
 
