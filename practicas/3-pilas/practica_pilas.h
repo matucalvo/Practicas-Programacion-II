@@ -27,4 +27,6 @@ Pila elementosEnComun(Pila p1, Pila p2);
 
 Pila eliminarRepetidos(Pila p);
 
+
+
 #endif // PRACTICA_PILAS_H

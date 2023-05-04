@@ -10,6 +10,27 @@
 
 
 //// FUNCIONES AUXILIARES ////
+void p_mostrarConValor(Pila pila){
+    Pila pila_aux = p_crear();
+    TipoElemento te;
+
+    printf("Elementos de la pila: \n");
+
+    //recorro la pila desapilandola y pasandosela a la auxiliar
+    while (!p_es_vacia(pila)){
+        te = p_desapilar(pila);
+        printf("%d:%d ", te->clave,*(int*)te->valor);
+        p_apilar(pila_aux, te);
+        printf("\n"); 
+
+    }
+
+    while (!p_es_vacia(pila_aux)){
+        te = p_desapilar(pila_aux);
+        p_apilar(pila, te);
+    }
+
+}
 
 void intercambiarP(Pila pila1, Pila pila2){
     TipoElemento te;
@@ -148,13 +169,16 @@ void intercambiarElementos(Pila p, int pos1, int pos2) {
 Pila copiar(Pila p) {
     Pila pilaAux = p_crear();
     Pila copia = p_crear();
+    Pila pilaAux1 = p_crear();
     TipoElemento te;
 
     while(!p_es_vacia(p)){
         te = p_desapilar(p);
         p_apilar(pilaAux,te);
+        p_apilar(pilaAux1,te);
     }
 
+    intercambiarP(pilaAux1,p);
     intercambiarP(pilaAux,copia);
 
     return copia;
@@ -277,10 +301,52 @@ Pila elementosEnComun(Pila p1, Pila p2) {
     }
 
     intercambiarP(pilaAux1,p1);
-    //intercambiarP(pilaAux2,p2);
 
     return invertirPila(ElementosEnComun);
 }
 
 Pila eliminarRepetidos(Pila p) {
+    Pila pCopia = copiar(p);
+    Pila SinRepetidos = p_crear();
+    Pila Paux = p_crear();
+    TipoElemento teP, teC;
+
+
+    
+
+    while (!p_es_vacia(p)){
+        int cantidad = 0;
+        bool condicion = true;
+        teP = p_desapilar(p);
+
+        if (buscarElemento(Paux,teP) == true){
+            condicion = false;
+        }
+
+        while (!p_es_vacia(pCopia) && condicion){
+            teC = p_desapilar(pCopia);
+            if (teP->clave == teC->clave){
+                cantidad += 1; 
+                p_apilar(Paux,teP);
+            }
+        }
+        if (condicion == true){
+            TipoElemento teR = te_crear_con_valor(teP->clave,&cantidad);
+            //printf("%d:%d\n", teR->clave, *(int*)teR->valor);
+            p_mostrarConValor(SinRepetidos);
+            
+            p_apilar(SinRepetidos,teR);
+        }
+        pCopia = copiar(p);
+    }
+
+    
+
+    
+
+    return SinRepetidos;
+
 }
+
+
+
