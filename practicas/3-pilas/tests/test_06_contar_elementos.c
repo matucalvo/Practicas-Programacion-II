@@ -3,17 +3,8 @@
 #include "tipo_elemento.h"
 #include "pilas/pilas.h"
 #include "cadenas.h"
+#include "pilas/util_pilas.h"
 #include <stdio.h>
-
-Pila crear_pila_desde_array(int *vector, int tamano) {
-    Pila p = p_crear();
-
-    for (int i = 0; i < tamano; i++) {
-        p_apilar(p, te_crear(vector[i]));
-    }
-
-    return p;
-}
 
 int main() {
     imprimir_titulo("Tests para contar elementos");
