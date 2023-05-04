@@ -253,17 +253,33 @@ Pila eliminarTodasOcurrencias(Pila p, int clave) {
     intercambiarP(pilaAux2,p);
 
     
-
-
-    
-
-    
-
-
     return invertirPila(pilaAux);
 }
 
 Pila elementosEnComun(Pila p1, Pila p2) {
+    Pila pilaAux1 = p_crear();
+    Pila pilaAux2 = p_crear();
+    Pila ElementosEnComun = p_crear();
+    TipoElemento te1, te2;
+
+    while (!p_es_vacia(p1)){
+        te1 = p_desapilar(p1);
+        p_apilar(pilaAux1,te1);
+        while (!p_es_vacia(p2)){
+            te2 = p_desapilar(p2);
+            p_apilar(pilaAux2,te2);
+            if (te1->clave == te2->clave){
+            p_apilar(ElementosEnComun,te2);
+        }
+        }
+
+        intercambiarP(pilaAux2,p2);
+    }
+
+    intercambiarP(pilaAux1,p1);
+    //intercambiarP(pilaAux2,p2);
+
+    return invertirPila(ElementosEnComun);
 }
 
 Pila eliminarRepetidos(Pila p) {
