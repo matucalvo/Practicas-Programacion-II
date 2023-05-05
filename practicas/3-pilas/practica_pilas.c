@@ -250,12 +250,15 @@ char* cambioDeBase(int numero, int base) {
 
 Pila invertirPila(Pila p) {
     Pila invertida = p_crear();
+    Pila aux = copiar(p);
     TipoElemento te;
 
     while (!p_es_vacia(p)){
         te = p_desapilar(p);
         p_apilar(invertida,te);
     }
+
+    intercambiarP(aux,p);
 
     
     return invertida;
@@ -303,41 +306,39 @@ Pila elementosEnComun(Pila p1, Pila p2) {
     intercambiarP(pilaAux1,p1);
 
     return invertirPila(ElementosEnComun);
-}
+}           
 
 Pila eliminarRepetidos(Pila p) {
     Pila pCopia = copiar(p);
     Pila SinRepetidos = p_crear();
     Pila Paux = p_crear();
+    Pila original = copiar(p);
     TipoElemento teP, teC;
-
-
     
 
     while (!p_es_vacia(p)){
-        int cantidad = 0;
+        int *cantidad = malloc(sizeof(int));
+        *cantidad = 0;
         bool condicion = true;
         teP = p_desapilar(p);
 
-        if (buscarElemento(Paux,teP) == true){
+        if (buscarElemento(Paux,teP) == true){   // verificar si ya se busco el elemento, de ser asi, no entra en el while
             condicion = false;
         }
 
         while (!p_es_vacia(pCopia) && condicion){
             teC = p_desapilar(pCopia);
             if (teP->clave == teC->clave){
-                cantidad += 1; 
+                *cantidad += 1; 
                 p_apilar(Paux,teP);
             }
         }
         if (condicion == true){
-            TipoElemento teR = te_crear_con_valor(teP->clave,&cantidad);
-            //printf("%d:%d\n", teR->clave, *(int*)teR->valor);
-            p_mostrarConValor(SinRepetidos);
-            
+            TipoElemento teR = te_crear_con_valor(teP->clave,cantidad);
             p_apilar(SinRepetidos,teR);
         }
         pCopia = copiar(p);
+        
     }
 
     
