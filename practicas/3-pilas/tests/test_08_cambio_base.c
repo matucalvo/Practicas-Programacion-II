@@ -16,6 +16,8 @@ void probar(char *esperado, int numero, int base){
 
     assert(str_eq(res,esperado));
 
+    free(res);
+
 }
 
 int main() {
