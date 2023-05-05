@@ -246,6 +246,28 @@ bool compararPilas(Pila p1, Pila p2) {
 }
 
 char* cambioDeBase(int numero, int base) {
+    Pila pila = p_crear();
+    TipoElemento te,te1;
+
+    while (numero != 0){
+        int resto = numero % base;  
+        TipoElemento te = te_crear(resto);
+        p_apilar(pila, te);
+        numero /= base;
+    }
+
+    char* digitos = "0123456789ABCDEF";
+    char* resultado = (char*)malloc(sizeof(char) * 100);
+    int i = 0;
+
+    while (!p_es_vacia(pila)){
+        te1 = p_desapilar(pila);
+        resultado[i++] = digitos[te1->clave];
+    }
+    resultado[i] = '\0';
+
+
+    return resultado;
 }
 
 Pila invertirPila(Pila p) {
