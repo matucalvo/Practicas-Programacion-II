@@ -39,9 +39,9 @@ int main() {
     probar(pila1, pila2, pilaEsperada);
 
 
-    free(pila1);
-    free(pila2);
-    free(pilaEsperada);
+    destruir_pila(pila1);
+    destruir_pila(pila2);
+    destruir_pila(pilaEsperada);
 
     return 0;
 }
