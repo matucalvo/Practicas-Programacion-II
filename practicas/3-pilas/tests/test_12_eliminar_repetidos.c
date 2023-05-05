@@ -27,7 +27,7 @@ bool compararPilasValores(Pila p1, Pila p2) {
         p_apilar(pilaAux,tep2);
 
 
-        if ((tep1->clave != tep2->clave) && (tep1->valor != tep2->clave)){
+        if ((tep1->clave != tep2->clave) || (*(int*)tep1->valor != *(int*)tep2->valor)){
             condicion = false;
         } 
     }
@@ -92,6 +92,8 @@ int main() {
      int valores[] = {3,2,2,1,3};
      //valores para pila esperada
      Pila esperada = crear_pila_desde_array_valores(numeros1,valores,5);
+
+     
 
     //pruebo si son iguales
     probar(esperada,pila,true);
