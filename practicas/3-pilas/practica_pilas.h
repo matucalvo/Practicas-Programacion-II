@@ -28,5 +28,26 @@ Pila elementosEnComun(Pila p1, Pila p2);
 Pila eliminarRepetidos(Pila p);
 
 
+// funciones auxiliares
+
+bool compararPilasValores(Pila p1, Pila p2);
+
+Pila crear_pila_desde_array_valores(int *vectorClaves, int *vectorValores, int tamano);
+
+Pila crear_pila_desde_array_valorChar(int *vectorClaves, char *Valores, int tamano);
+
+int longitudPila(Pila pila);
+
+void invertirMismaPila(Pila p);
+
+void p_mostrarConValor(Pila pila);
+
+
+
+/// TAD MAZO ///
+
+Pila crearMazo();
+
+
 
 #endif // PRACTICA_PILAS_H

@@ -10,6 +10,7 @@
 
 
 
+
 int main() {
     imprimir_titulo("Tests para generar números al azar únicos en una lista");
     srand(getpid());

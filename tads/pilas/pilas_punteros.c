@@ -61,7 +61,7 @@ void p_mostrar(Pila pila) {
     Pila pila_aux = p_crear();
     TipoElemento te;
 
-    printf("Elementos de la pila: \n");
+
 
     //recorro la pila desapilandola y pasandosela a la auxiliar
     while (!p_es_vacia(pila)){

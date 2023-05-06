@@ -61,4 +61,7 @@ bool subLista(Lista l1, Lista l2);
 // Subconjuntos que suman N
 Lista subConjuntosQueSumanN(Lista l1, int n);
 
+
+
+
 #endif // PRACTICA_LISTAS_H

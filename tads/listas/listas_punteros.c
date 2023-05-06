@@ -41,7 +41,7 @@ int l_longitud(Lista lista) {
 
 void l_agregar(Lista lista, TipoElemento elemento) {
     if (l_es_llena(lista)) {
-        return;
+        return NULL;
     }
     // Ahora lo agrego
     struct Nodo *nuevo_nodo = malloc(sizeof(struct Nodo));
@@ -62,7 +62,7 @@ void l_agregar(Lista lista, TipoElemento elemento) {
 
 void l_borrar(Lista lista, int clave) {
     if (l_es_vacia(lista)) {
-        return;
+        return NULL;
     }
     // Ahora comienza a borrar
     struct Nodo *actual = lista->inicio;
@@ -99,13 +99,13 @@ TipoElemento l_buscar(Lista lista, int clave) {
 
 void l_insertar(Lista lista, TipoElemento elemento, int pos) {
     if (l_es_llena(lista)) {
-        return;
+        return NULL;
     }
 
     // Controlo si pos > cantidad de elementos mando a agregar
     if (pos > l_longitud(lista)) {
         l_agregar(lista, elemento);
-        return;
+        return NULL;
     }
 
     // Ahora si lo voy a insertar
@@ -129,7 +129,7 @@ void l_insertar(Lista lista, TipoElemento elemento, int pos) {
 
 void l_eliminar(Lista lista, int pos) {
     if (l_es_vacia(lista)) {
-        return;
+        return NULL;
     }
 
     struct Nodo *actual = lista->inicio;

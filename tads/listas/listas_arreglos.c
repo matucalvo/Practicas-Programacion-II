@@ -37,7 +37,7 @@ int l_longitud(Lista lista) {
 
 void l_agregar(Lista lista, TipoElemento elemento) {
     if (l_es_llena(lista)) {
-        return;
+        return NULL;
     }
     lista->valores[lista->cantidad] = elemento;
     lista->cantidad++;
@@ -45,7 +45,7 @@ void l_agregar(Lista lista, TipoElemento elemento) {
 
 void l_borrar(Lista lista, int clave) {
     if (l_es_vacia(lista)) {
-        return;
+        return NULL;
     }
 
     int pos = 0;
@@ -79,7 +79,7 @@ void l_insertar(Lista lista, TipoElemento elemento, int pos) {
     // Controlo que si pos > cantidad de elementos lo agrega al final
     if (pos > l_longitud(lista)) {
         l_agregar(lista, elemento);
-        return;
+        return NULL;
     }
     // Ahora si lo puede insertar
     for (int i = lista->cantidad; i >= pos && i > 0; i--) {
@@ -91,7 +91,7 @@ void l_insertar(Lista lista, TipoElemento elemento, int pos) {
 
 void l_eliminar(Lista lista, int pos) {
     if (pos > l_longitud(lista)) {
-        return;
+        return NULL;
     }
     // Ahora intento eliminar
     if (1 <= pos && pos <= l_longitud(lista)) {

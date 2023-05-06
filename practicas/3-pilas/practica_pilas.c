@@ -10,6 +10,17 @@
 
 
 //// FUNCIONES AUXILIARES ////
+
+Pila crear_pila_desde_array_valorChar(int *vectorClaves, char *Valores, int tamano) {
+    Pila p = p_crear();
+
+    for (int i = 0; i < tamano; i++) {
+        p_apilar(p, te_crear_con_valor(vectorClaves[i], Valores));
+    }
+
+    return p;
+}
+
 void p_mostrarConValor(Pila pila){
     Pila pila_aux = p_crear();
     TipoElemento te;
@@ -20,6 +31,29 @@ void p_mostrarConValor(Pila pila){
     while (!p_es_vacia(pila)){
         te = p_desapilar(pila);
         printf("%d:%d ", te->clave,*(int*)te->valor);
+        p_apilar(pila_aux, te);
+        printf("\n"); 
+
+    }
+
+    while (!p_es_vacia(pila_aux)){
+        te = p_desapilar(pila_aux);
+        p_apilar(pila, te);
+    }
+
+}
+
+void p_mostrarConValorChar(Pila pila){
+    Pila pila_aux = p_crear();
+    TipoElemento te;
+
+    printf("Elementos de la pila: \n");
+
+    //recorro la pila desapilandola y pasandosela a la auxiliar
+    while (!p_es_vacia(pila)){
+        te = p_desapilar(pila);
+        char *valor = (char*)te->valor;
+        printf("%d:%s ", te->clave,valor);
         p_apilar(pila_aux, te);
         printf("\n"); 
 
@@ -372,4 +406,92 @@ Pila eliminarRepetidos(Pila p) {
 }
 
 
+/// TAD MAZO ///
 
+////////////////////////// funciones auxiliares ////////////////////////////////
+Pila cargarPorPalo(char *palo, int *numerosCartas){
+    return crear_pila_desde_array_valorChar(numerosCartas, palo, 12);       
+}
+
+Pila JuntarCartas(Pila Basto, Pila Espada, Pila Copa, Pila Oro){
+    Pila MazoEntero = p_crear();
+    TipoElemento te;
+
+    while(!p_es_vacia(Basto)){
+        te = p_desapilar(Oro);
+        p_apilar(MazoEntero,te);
+
+        te = p_desapilar(Copa);
+        p_apilar(MazoEntero,te);
+
+        te = p_desapilar(Espada);
+        p_apilar(MazoEntero,te);
+
+        te = p_desapilar(Basto);
+        p_apilar(MazoEntero,te);
+    }
+
+    return MazoEntero;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+Pila crearMazo(){
+    int numeros[] = {1,2,3,4,5,6,7,8,9,10,11,12};   //vector con cantidad de cartas
+
+    char *basto = "Basto";
+    char *espada = "Espada";            // creo los char palos
+    char *copa = "Copa";
+    char *oro = "Oro";
+
+    Pila Basto = cargarPorPalo(basto, numeros);
+    Pila Espada = cargarPorPalo(espada,numeros);        //creo una pila por palo
+    Pila Copa = cargarPorPalo(copa, numeros);
+    Pila Oro = cargarPorPalo(oro,numeros);
+
+    Pila Mazo = JuntarCartas(Basto,Espada,Copa,Oro);        //juntos los 4 palos
+
+    //p_mostrarConValorChar(Mazo);
+
+    return Mazo;
+}
+
+
+
+void mezclarMazoAux(Pila Mazo){
+    Pila mezclada = p_crear();
+    Pila auxiliar = p_crear();
+    TipoElemento te;
+    srand(time(NULL));
+    int tamano = longitudPila(Mazo);
+
+    while (!p_es_vacia(Mazo)){
+        int random = rand() % tamano;
+
+        for (int i = 0; i < random; i++)
+        {
+            te = p_desapilar(Mazo);
+            p_apilar(auxiliar, te);
+            tamano--;
+        }
+
+        te = p_desapilar(Mazo);
+        p_apilar(mezclada, te);
+        tamano--;
+    }
+
+    while (!p_es_vacia(auxiliar)){
+        te = p_desapilar(auxiliar);
+        p_apilar(mezclada,te);
+    }
+
+    
+    intercambiarP(mezclada,Mazo);
+}
+
+void mezclarMazo(Pila Mazo, int cantidadMezcla){
+    for (int i = 0; i < cantidadMezcla; i++)
+    {
+        mezclarMazoAux(Mazo);
+    }
+    
+}

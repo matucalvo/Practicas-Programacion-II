@@ -98,8 +98,11 @@ int main() {
     //pruebo si son iguales
     probar(esperada,pila,true);
 
+    destruir_pila(pila);
+    destruir_pila(esperada);
 
-    
+
+
 
     return 0;
 }
