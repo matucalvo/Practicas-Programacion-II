@@ -5,6 +5,21 @@
 #include "cadenas.h"
 #include "pilas/util_pilas.h"
 #include <stdio.h>
+#include <assert.h>
+#include "aserciones.h"
+#include <stdlib.h>
+
+void probar(Pila original, int cantidadEsperada){
+    int res = contarElementos(original);
+
+    printf("Cantidad de elementos calculada: %d \n", res);
+
+    printf("Cantidad de elementos esperada: %d", cantidadEsperada);
+
+
+    assert(int_eq(res,cantidadEsperada));
+
+}
 
 int main() {
     imprimir_titulo("Tests para contar elementos");
@@ -13,7 +28,7 @@ int main() {
 
     Pila pila = crear_pila_desde_array(numeros,7);
 
-    printf("Hay %d elementos en la pila\n", contarElementos(pila));
+    probar(pila, 7);
 
     return 0;
 }

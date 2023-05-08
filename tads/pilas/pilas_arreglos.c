@@ -36,7 +36,7 @@ void p_apilar(Pila pila, TipoElemento elemento) {
 
 TipoElemento p_desapilar(Pila pila) {
     if (p_es_vacia(pila)){
-        return;
+        return NULL;
     }
 
 
@@ -50,7 +50,7 @@ TipoElemento p_desapilar(Pila pila) {
 
 TipoElemento p_tope(Pila pila) {
     if (p_es_vacia(pila)){
-        return;
+        return NULL;
     }
 
     return pila->valores[pila->tope-1];

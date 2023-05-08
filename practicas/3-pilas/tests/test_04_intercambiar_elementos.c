@@ -6,7 +6,6 @@
 #include "pilas/util_pilas.h"
 #include <assert.h>
 #include "aserciones.h"
-#include "pilas/util_pilas.h"
 #include <stdlib.h>
 
 void probar(Pila original, Pila esperada, int pos1, int pos2){

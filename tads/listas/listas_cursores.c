@@ -84,7 +84,7 @@ void l_agregar(Lista lista, TipoElemento elemento) {
 
 void l_borrar(Lista lista, int clave) {
     if (l_es_vacia(lista)) {
-        return NULL;
+        return;
     }
 
     int q;
@@ -140,7 +140,7 @@ void l_insertar(Lista lista, TipoElemento elemento, int pos) {
     // llama automaticamente al agregar
     if (pos > l_longitud(lista)) {
         l_agregar(lista, elemento);
-        return NULL;
+        return;
     }
 
     // Sino asigna espacio tomando del libre
