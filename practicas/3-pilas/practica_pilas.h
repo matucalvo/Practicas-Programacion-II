@@ -2,6 +2,7 @@
 #define PRACTICA_PILAS_H
 
 #include "pilas/pilas.h"
+#include "listas/listas.h"
 
 bool buscarElemento(Pila p, TipoElemento e);
 
@@ -42,11 +43,20 @@ void invertirMismaPila(Pila p);
 
 void p_mostrarConValor(Pila pila);
 
+void p_mostrarConValorChar(Pila pila);
+
+char *toStringEntero(TipoElemento te);
+
+
 
 
 /// TAD MAZO ///
 
 Pila crearMazo();
+
+Lista RepartirCartas(Pila mazo, int n);
+
+void mezclarMazo(Pila Mazo);
 
 
 

@@ -7,6 +7,8 @@
 #include "practica_pilas.h"
 #include "tipo_elemento.h"
 #include "pilas/pilas.h"
+#include "listas/listas.h"
+#include <time.h>
 
 
 //// FUNCIONES AUXILIARES ////
@@ -108,6 +110,13 @@ void invertirMismaPila(Pila p) {
 
     free(pilaAux);
  
+}
+
+char *toStringEntero(TipoElemento te) {
+    int *valor = (int*) te->valor;
+    char *str = (char *) malloc(100 * sizeof(char));
+    sprintf(str, "%d", *valor);
+    return str;
 }
 
 
@@ -457,7 +466,7 @@ Pila crearMazo(){
 
 
 
-void mezclarMazoAux(Pila Mazo){
+void mezclarMazo(Pila Mazo){
     Pila mezclada = p_crear();
     Pila auxiliar = p_crear();
     TipoElemento te;
@@ -488,10 +497,97 @@ void mezclarMazoAux(Pila Mazo){
     intercambiarP(mezclada,Mazo);
 }
 
-void mezclarMazo(Pila Mazo, int cantidadMezcla){
-    for (int i = 0; i < cantidadMezcla; i++)
+
+
+// n es la cantidad de jugadores
+
+Lista RepartirCartas(Pila mazo, int n){
+    Lista cartas = l_crear();
+    TipoElemento carta1,carta2;
+
+    for (int i = 0; i < n; i++)
     {
-        mezclarMazoAux(Mazo);
+        carta1 = p_desapilar(mazo);
+        carta2 = p_desapilar(mazo);
+
+        Lista jugador = l_crear();
+
+        l_agregar(jugador,carta1);
+        l_agregar(jugador,carta2);
+
+        TipoElemento te = te_crear_con_valor(0,jugador);
+        l_agregar(cartas,te);
     }
+
+    return cartas;
     
+}
+
+Lista Parejas4(Lista lista, Pila mazo, int n){
+    Lista parejas = l_crear();
+    TipoElemento teL,teP;
+    int i = 0;
+    Pila pareja1 = p_crear();
+    Pila pareja2 = p_crear();
+    
+    
+    while(!p_es_vacia(mazo) && (i == 2)){
+        Iterador ite = iterador(lista);
+        int numJug = 0;
+        while(hay_siguiente(ite) && i == 2){
+            teL = siguiente(ite);
+            teP = p_desapilar(mazo);
+            numJug++;
+            p_apilar(teL->valor,teP);
+            if (teP->clave == 12){
+                i++;
+                TipoElemento jugador = te_crear_con_valor(numJug,teL->valor);
+                p_apilar(pareja1,jugador);
+                l_eliminar(lista,numJug);
+            }
+        }
+    }
+// segunda pareja 
+    Iterador ite = iterador(lista);
+    while(hay_siguiente(ite)){
+        teL = siguiente(ite);
+        p_apilar(pareja2,teL);
+    }
+
+   
+        TipoElemento equipo1 = te_crear_con_valor(1,pareja1);
+        TipoElemento equipo2 = te_crear_con_valor(2,pareja2);
+        l_agregar(parejas, equipo1);
+        l_agregar(parejas, equipo2);
+
+        return parejas;
+
+    }
+
+
+Lista Parejas(Pila mazo, int n){
+    Lista parejas = l_crear();
+    int i = 0;
+    Lista parejasfinal;
+
+    if (n == 4){
+        while (i < n){
+            Pila jugador = p_crear();
+            TipoElemento te = te_crear_con_valor(0,jugador);
+            l_agregar(parejas,te);
+            i++;
+            Lista parejasfinal = Parejas4(parejas,mazo,n);
+        }
+        Lista parejasfinal = Parejas4(parejas,mazo,n);
+    } else if (n == 6){
+        while (i < n){
+            Pila jugador = p_crear();
+            TipoElemento te = te_crear_con_valor(0,jugador);
+            l_agregar(parejas,te);
+            i++;
+        }
+    }
+
+    return parejasfinal;
+
 }
