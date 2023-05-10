@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include "pilas/util_pilas.h"
 
+int longitudPila(Pila pila);
+void invertirMismaPila(Pila p);
+void p_mostrarConValor(Pila pila);
+
 bool compararPilasValores(Pila p1, Pila p2) {
     Pila pilaAux = p_crear();
     TipoElemento te, tep1, tep2;

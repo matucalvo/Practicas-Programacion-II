@@ -290,7 +290,7 @@ bool compararPilas(Pila p1, Pila p2) {
 
 char* cambioDeBase(int numero, int base) {
     Pila pila = p_crear();
-    TipoElemento te,te1;
+    TipoElemento te1;
 
     while (numero != 0){
         int resto = numero % base;  
