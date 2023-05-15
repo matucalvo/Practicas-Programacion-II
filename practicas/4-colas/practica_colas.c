@@ -242,3 +242,33 @@ bool mismosElementos(Cola c1, Cola c2){
 
 }
 
+
+Cola unicos(Cola c){
+    TipoElemento te,te1;
+    Cola caux1 = c_crear();
+    Cola caux2 = c_crear();
+    Cola unicosElementos = c_crear();
+    
+
+    caux1 = copia(c);
+    
+
+    while(!c_es_vacia(caux1)){
+        caux2 = copia(c);
+        int contador = 0;
+        te = c_desencolar(caux1);
+        while(!c_es_vacia(caux2)){
+            te1 = c_desencolar(caux2);
+            if (te->clave == te1->clave){
+                contador++;
+            }        
+        }  
+        if (contador < 2){
+            c_encolar(unicosElementos,te);
+        }
+    }
+
+
+    return unicosElementos;
+}
+
