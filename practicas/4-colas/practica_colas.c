@@ -58,11 +58,13 @@ bool buscarElemEnCola(Cola cola1, Cola cola2){
         }
     }
 
+    destruir_cola(copiaC2);
+
     return condicion;
 
 }
 
-//
+/// FUNCIONES AUXILIARES //
 
 
 bool buscarElemento(Cola c, TipoElemento e){
@@ -80,6 +82,8 @@ bool buscarElemento(Cola c, TipoElemento e){
 
     intercambiarC(caux,c);
 
+    destruir_cola(caux);
+
     return condicion;
 }
 
@@ -87,9 +91,6 @@ bool buscarElemento(Cola c, TipoElemento e){
 void insertarElemento(Cola c, TipoElemento e, int pos){
     Cola caux = c_crear();
     TipoElemento te;
-    
-
-
 
     intercambiarC(c,caux);
 
@@ -102,6 +103,8 @@ void insertarElemento(Cola c, TipoElemento e, int pos){
     c_encolar(c,e);
 
     intercambiarC(caux,c);
+
+    destruir_cola(caux);
      
 }
 
@@ -119,6 +122,8 @@ void eliminarElemento(Cola c, int clave){
 
     intercambiarC(caux,c);
 
+    destruir_cola(caux);
+
 }
 
 int tamanoCola(Cola c){
@@ -133,6 +138,8 @@ int tamanoCola(Cola c){
     }
 
     intercambiarC(caux,c);
+
+    destruir_cola(caux);
     return contador;
 
 }
@@ -149,6 +156,8 @@ Cola copia(Cola c){
    }
 
    intercambiarC(caux,c);
+
+   destruir_cola(caux);
    
 
     return copia;
@@ -178,6 +187,9 @@ Cola invertir(Cola c){
         intercambiarC(caux2,caux1);
     }
 
+    destruir_cola(caux1);
+    destruir_cola(caux2);
+
     return invertida;
 }
 
@@ -205,6 +217,9 @@ bool comparar(Cola c1, Cola c2){
 
     intercambiarC(invertir(caux1), c1);
     intercambiarC(invertir(caux2), c2);
+
+    destruir_cola(caux1);
+    destruir_cola(caux2);
 
 
     return condicion;
@@ -239,6 +254,9 @@ bool mismosElementos(Cola c1, Cola c2){
         return true;
     } else return false;
 
+    destruir_cola(copiaC1);
+    destruir_cola(copiaC2);
+
 
 }
 
@@ -267,6 +285,9 @@ Cola unicos(Cola c){
             c_encolar(unicosElementos,te);
         }
     }
+
+    destruir_cola(caux1);
+    destruir_cola(caux2);
 
 
     return unicosElementos;
