@@ -9,6 +9,7 @@
 #include "colas/colas.h"
 #include "colas/util_colas.h"
 
+
 /// FUNCIONES AUXILIARES //
 
 void intercambiarC(Cola cola1, Cola cola2){
@@ -62,6 +63,52 @@ bool buscarElemEnCola(Cola cola1, Cola cola2){
 
     return condicion;
 
+}
+
+
+
+void intercambiarP(Pila pila1, Pila pila2){
+    TipoElemento te;
+
+    while (!p_es_vacia(pila1)){
+        te = p_desapilar(pila1);
+        p_apilar(pila2, te);
+    }
+}
+
+
+Pila copiar(Pila p) {
+    Pila pilaAux = p_crear();
+    Pila copia = p_crear();
+    Pila pilaAux1 = p_crear();
+    TipoElemento te;
+
+    while(!p_es_vacia(p)){
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+        p_apilar(pilaAux1,te);
+    }
+
+    intercambiarP(pilaAux1,p);
+    intercambiarP(pilaAux,copia);
+
+    return copia;
+}
+
+int contarElementos(Pila p) {
+     int i = 0;
+    Pila pilaAux = p_crear();
+    TipoElemento te;
+
+    while(!p_es_vacia(p)){
+        te = p_desapilar(p);
+        p_apilar(pilaAux,te);
+        i++;
+    }
+
+    intercambiarP(pilaAux,p);
+
+    return i;
 }
 
 /// FUNCIONES AUXILIARES //
@@ -291,5 +338,47 @@ Cola unicos(Cola c){
 
 
     return unicosElementos;
+}
+
+
+
+
+Lista buscaRepetidos(Pila p, Cola c){
+    Pila pCopia = p_crear();
+    Cola cCopia = c_crear();
+    Lista lista = l_crear();
+    TipoElemento teC,teP;
+    
+
+
+    
+    cCopia = copia(c);
+    int i = 0;
+    
+
+    while(!c_es_vacia(cCopia)){
+        teC = c_desencolar(cCopia);
+        pCopia = copiar(p);
+        i++;
+        int j = contarElementos(p);
+        while(!p_es_vacia(pCopia)){
+            teP = p_desapilar(pCopia);
+            if (teC->clave == teP->clave){
+                struct Repetido *repetidos = malloc(sizeof(struct Repetido));
+                repetidos->clave = teC->clave;
+                repetidos->posicionEnCola = i;
+                repetidos->posicionEnPila = j;
+
+                l_agregar(lista, te_crear_con_valor(0,repetidos));  
+            } 
+            j--;
+        }
+    }
+
+    destruir_cola(cCopia);
+    
+    return lista;
+
+
 }
 
