@@ -6,15 +6,32 @@
 #include "cadenas.h"
 #include "aserciones.h"
 
+void probar(Cola cola, Cola colaEsperada){
+    Cola res = copia(cola);
+    printf("\n Cola esperada: \n");
+    c_mostrar(colaEsperada);
+
+    printf("\n Cola copia: \n");
+    c_mostrar(res);
+
+    bool verificacion = comparar(res,colaEsperada);
+
+    assert(bool_true(verificacion));
+}
+
 int main() {
     imprimir_titulo("Tests para duplicar cola");
 
     int numeros[] = {1, 6, 3, 7, 4, 8, 3};
     Cola cola = crear_cola_desde_array(numeros,7);
-    Cola copia1 = copia(cola);
+    Cola colaEsperada = crear_cola_desde_array(numeros,7);
 
-    c_mostrar(cola);
-    c_mostrar(copia1);
+    probar(cola,colaEsperada);
+
+
+
+
+    
 
     return 0;
 }

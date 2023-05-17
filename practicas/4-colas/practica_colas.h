@@ -42,7 +42,7 @@ Lista procesar(int q, Cola c1, Cola c2, Cola c3);
 
 
 
-
+//////////////////////////////////////////////////
 void intercambiarP(Pila pila1, Pila pila2);
 int contarElementos(Pila p);
 Pila copiar(Pila p);

@@ -40,26 +40,28 @@ bool buscarElemEnCola(Cola cola1, Cola cola2){
     TipoElemento teC1, teC2;
     bool condicionaux = false;
     bool condicion = false;
-    Cola copiaC2 = c_crear();
+
 
      while(!c_es_vacia(cola1) && !condicionaux){       
         condicion = false;
         condicionaux = false;
         teC1 = c_desencolar(cola1);
-        copiaC2 = copia(cola2);
+        Cola copiaC2 = copia(cola2);
         while(!c_es_vacia(copiaC2) && !condicion){          
             teC2 = c_desencolar(copiaC2);
             if (teC1->clave == teC2->clave){    // si encuentra el elemento de la cola 1 en algun lugar de la cola 2, para y sigue buscando los otros elementos de la cola 1
                 condicion = true;
         }
         }
+        
+        free(copiaC2);
 
         if (condicion == false){        // si no encontro algun elemento de la cola 1 en la cola 2, para de buscar y devuelve false, de lo contrario sigue buscando
             condicionaux = true;
         }
     }
 
-    destruir_cola(copiaC2);
+   
 
     return condicion;
 
@@ -139,17 +141,26 @@ void insertarElemento(Cola c, TipoElemento e, int pos){
     Cola caux = c_crear();
     TipoElemento te;
 
+
     intercambiarC(c,caux);
 
-    for (int i = 1; i < pos; i++)
-    {
-        te = c_desencolar(caux);
-        c_encolar(c,te);
+    if (pos <= 1) {
+        c_encolar(c, e);
+    } else {
+
+        
+
+        for (int i = 1; i < pos; i++) {
+            te = c_desencolar(caux);
+            c_encolar(c, te);
+        }
+
+        c_encolar(c, e);
     }
 
-    c_encolar(c,e);
+    intercambiarC(caux, c);
 
-    intercambiarC(caux,c);
+
 
     destruir_cola(caux);
      
@@ -250,20 +261,18 @@ bool comparar(Cola c1, Cola c2){
     Cola caux2 = c_crear();
     bool condicion = true;
 
-    while(!c_es_vacia(c1)){
-        te1 = c_desencolar(c1);
-        te2 = c_desencolar(c2);
+    caux1 = copia(c1);
+    caux2 = copia(c2);
+
+    while(!c_es_vacia(caux1)){
+        te1 = c_desencolar(caux1);
+        te2 = c_desencolar(caux2);
 
         if (te1->clave != te2->clave){
             condicion = false;
         }
-
-        c_encolar(caux1,te1);
-        c_encolar(caux2,te2);
     }
 
-    intercambiarC(invertir(caux1), c1);
-    intercambiarC(invertir(caux2), c2);
 
     destruir_cola(caux1);
     destruir_cola(caux2);
@@ -278,21 +287,20 @@ bool comparar(Cola c1, Cola c2){
 
 
 bool mismosElementos(Cola c1, Cola c2){
-    Cola copiaC1 = c_crear();
-    Cola copiaC2 = c_crear();
     bool condicionCola1 = false;
     bool condicionCola2 = false;
 
 
-    copiaC1 = copia(c1);
-    copiaC2 = copia(c2);
 
-    condicionCola1 = buscarElemEnCola(copiaC1, copiaC2);  // busco  si los elementos de la cola 1 estan en la cola 2
 
-    copiaC1 = copia(c1);
-    copiaC2 = copia(c2);
 
-    condicionCola2 = buscarElemEnCola(copiaC2,copiaC1);  // busco si los elementos de la cola 2 estan en la cola 1
+    condicionCola1 = buscarElemEnCola(copia(c1), copia(c2));  // busco  si los elementos de la cola 1 estan en la cola 2
+
+    c_mostrar(c1);
+    c_mostrar(c2);
+
+
+    condicionCola2 = buscarElemEnCola(copia(c2),copia(c1));  // busco si los elementos de la cola 2 estan en la cola 1
 
 
     
@@ -301,8 +309,6 @@ bool mismosElementos(Cola c1, Cola c2){
         return true;
     } else return false;
 
-    destruir_cola(copiaC1);
-    destruir_cola(copiaC2);
 
 
 }
@@ -348,10 +354,7 @@ Lista buscaRepetidos(Pila p, Cola c){
     Cola cCopia = c_crear();
     Lista lista = l_crear();
     TipoElemento teC,teP;
-    
-
-
-    
+ 
     cCopia = copia(c);
     int i = 0;
     
@@ -377,8 +380,13 @@ Lista buscaRepetidos(Pila p, Cola c){
 
     destruir_cola(cCopia);
     
+
     return lista;
 
+}
+
+
+Lista procesar(int q, Cola c1, Cola c2, Cola c3){
 
 }
 

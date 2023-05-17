@@ -6,18 +6,29 @@
 #include "cadenas.h"
 #include "aserciones.h"
 
+void probar(Cola cola, bool esperado, TipoElemento te){
+    bool res = buscarElemento(cola,te);
+
+    printf(res ? "\ntrue\n" : "\nfalse\n");
+
+    assert(bool_eq(res,esperado));
+
+}
+
 int main() {
     imprimir_titulo("Tests para buscar elemento");
 
     int numeros[] = {1, 6, 3, 7, 4, 8, 3};
     Cola cola = crear_cola_desde_array(numeros,7);
-    printf("\n");
+    
 
     TipoElemento te = te_crear(3);
-    bool encontrado = buscarElemento(cola,te);
 
-    c_mostrar(cola);
+    probar(cola, true, te);
 
-    printf(encontrado ? "\ntrue\n" : "\nfalse\n");
+    destruir_cola(cola);
+    
+
+    
     return 0;
 }
