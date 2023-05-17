@@ -53,7 +53,7 @@ bool buscarElemEnCola(Cola cola1, Cola cola2){
                 condicion = true;
         }
         }
-        
+
         free(copiaC2);
 
         if (condicion == false){        // si no encontro algun elemento de la cola 1 en la cola 2, para de buscar y devuelve false, de lo contrario sigue buscando
@@ -346,6 +346,45 @@ Cola unicos(Cola c){
     return unicosElementos;
 }
 
+struct Divisores *buscaDivisores(Cola c){
+    struct Divisores *resultado = malloc(sizeof(struct Divisores));
+    Lista listaParciales = l_crear();
+    
+
+    Cola copia1 = copia(c);
+    int cantidadElementos = tamanoCola(c);
+
+    TipoElemento teC1,teC2;
+    
+
+    while(!c_es_vacia(copia1)){
+        int contador = 0;
+        teC1 = c_desencolar(copia1);
+        Cola copia2 = copia(c);
+        while(!c_es_vacia(copia2)){
+            teC2 = c_desencolar(copia2);
+            if (teC2->clave % teC1->clave == 0){
+                contador++;
+            }
+        }
+
+        if (contador == cantidadElementos){
+            resultado->total = teC1->clave;
+        } else if (contador >= ((cantidadElementos + 1) / 2) && contador < cantidadElementos){
+            l_agregar(listaParciales,te_crear(teC1->clave));
+        }
+
+        free(copia2);
+
+    }
+
+    resultado->parciales = listaParciales;
+
+
+    return resultado;
+
+
+}
 
 
 
