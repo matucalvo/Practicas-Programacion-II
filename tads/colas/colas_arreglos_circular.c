@@ -13,7 +13,10 @@ struct ColaRep {
 };
 
 /** Función interna que hace avanzar el frente o el final hacia adelante */
-int paso(int posicion);
+int paso(int posicion){
+    return ((posicion % TAMANIO_MAXIMO) + 1);
+}
+
 
 /** Función interna que calcula la cantidad de elementos de la cola */
 int longitud(Cola cola);
@@ -24,9 +27,6 @@ bool c_es_llena(Cola cola);
 //-----------------
 // Rutinas internas
 //-----------------
-int paso(int posicion) {
-    return posicion % TAMANIO_MAXIMO + 1;
-}
 
 bool c_es_llena(Cola cola) {
     return paso(paso(cola->final)) == cola->frente;
