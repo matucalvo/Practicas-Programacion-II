@@ -426,6 +426,46 @@ Lista buscaRepetidos(Pila p, Cola c){
 
 
 Lista procesar(int q, Cola c1, Cola c2, Cola c3){
+    Lista lista = l_crear();
+    Lista procesados = l_crear();
+    Iterador ite = iterador(lista);
+    TipoElemento te;
+    l_agregar(lista, te_crear_con_valor(1, c1));
+    l_agregar(lista, te_crear_con_valor(2, c2));
+    l_agregar(lista, te_crear_con_valor(3, c3));
 
+
+    
+    
+
+    while (!l_es_vacia(lista)){
+        te = siguiente(ite);
+        Cola cola = te -> valor;
+        int numeroCliente = 0;
+        if (!c_es_vacia(cola)) {
+            TipoElemento cliente = c_recuperar(cola);
+            numeroCliente++;
+            if (q > cliente -> clave) {
+                q -= cliente -> clave;
+            } else {
+                cliente -> clave -= q;
+                c_desencolar(cola);
+                char *frase = malloc(sizeof(char)*50);
+                sprintf(frase, "Cliente %d Cola %i, ", numeroCliente, te -> clave);
+                l_agregar(procesados,te_crear_con_valor(0,frase));
+                l_eliminar(lista, te -> clave);
+            }
+        }
+        if (!hay_siguiente(ite)){
+            ite = iterador(lista);
+        }
+    }
+
+    return procesados;
 }
+
+
+
+
+
 
