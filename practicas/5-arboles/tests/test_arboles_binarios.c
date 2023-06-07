@@ -90,7 +90,7 @@ void test_operaciones_varias() {
 int main() {
     imprimir_titulo("Tests de Árboles Binarios");
 
-//    test_operaciones_varias();
+    test_operaciones_varias();
 
     return 0;
 }

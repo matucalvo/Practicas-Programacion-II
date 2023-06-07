@@ -26,19 +26,26 @@ enum Balanceo {
 };
 
 ArbolAVL avl_crear() {
+    ArbolAVL nuevo_arbol = malloc(sizeof(struct ArbolAVLRep));
+    nuevo_arbol->raiz = NULL;
+    nuevo_arbol->cantidad_elementos = 0;
+    return nuevo_arbol;
 }
 
 bool avl_es_vacio(ArbolAVL a) {
+    return a->cantidad_elementos == 0;
 }
 
 int avl_cantidad_elementos(ArbolAVL a) {
+    return a->cantidad_elementos;
 }
 
 NodoArbol avl_raiz(ArbolAVL a) {
+    return a->raiz;
 }
 
 enum Balanceo avl_calcular_balanceo(NodoArbol nodo) {
-    int diferenciaAltura = avl_altura_izq(nodo) - avl_altura_der(nodo);
+    int diferenciaAltura = + avl_altura_izq(nodo) - avl_altura_der(nodo);
     switch (diferenciaAltura) {
         case -2:
             return DESBALANCEADO_DERECHA;
@@ -54,10 +61,58 @@ enum Balanceo avl_calcular_balanceo(NodoArbol nodo) {
 }
 
 NodoArbol avl_insertar_recursivo(ArbolAVL a, TipoElemento te, NodoArbol pa) {
+    NodoArbol nuevo_nodo = crear_nodo_arbol(te);
+
+    if (avl_es_vacio(a)){
+        a->raiz = nuevo_nodo;
+        a->cantidad_elementos++;
+        return nuevo_nodo;
+    }
+
+    if (te->clave < recuperar_nodo_arbol(pa)->clave){
+        if (hijo_izquierdo(pa) == NULL){
+            pa->hi = nuevo_nodo;
+            a->cantidad_elementos++;
+        } else avl_insertar_recursivo(a, te, hijo_izquierdo(pa));
+    }
+    else if (te->clave > recuperar_nodo_arbol(pa)->clave) {
+        if (hijo_derecho(pa) == NULL){
+            pa->hd = nuevo_nodo;
+            a->cantidad_elementos++;
+        } else avl_insertar_recursivo(a, te, hijo_derecho(pa));
+    } else printf("La clave ya se encuentra en el arbol\n");
+
+    pa->altura = avl_max(avl_altura_izq(pa), avl_altura_der(pa)) ;   // guardo altura nodo
+    enum Balanceo fe = avl_calcular_balanceo(pa);   // calculo fe
+
+    if (fe == DESBALANCEADO_IZQUIERDA) {
+        if (te->clave < pa->hi->datos->clave) {
+            // Caso rotación derecha
+            pa = avl_rotar_derecha(pa);
+        } else {
+            // Caso rotación izquierda-derecha
+            pa->hi = avl_rotar_izquierda(pa->hi);
+            return avl_rotar_derecha(pa);
+        }
+    }
+
+    if (fe == DESBALANCEADO_DERECHA) {
+        if (te->clave > pa->hd->datos->clave) {
+            // Caso rotación izquierda
+            pa = avl_rotar_izquierda(pa);
+        } else {
+            // Caso rotación derecha-izquierda
+            pa->hd = avl_rotar_derecha(pa->hd);
+            return avl_rotar_izquierda(pa);
+        }
+    }
+
+
+    return nuevo_nodo;
 }
 
 void avl_insertar(ArbolAVL a, TipoElemento te) {
-    a->raiz = avl_insertar_recursivo(a, te, avl_raiz(a));
+    avl_insertar_recursivo(a, te, avl_raiz(a));
 }
 
 NodoArbol avl_buscar_minimo(NodoArbol nodoArbol) {
@@ -118,7 +173,7 @@ NodoArbol avl_rotar_izquierda(NodoArbol nodo) {
     return otro;
 }
 
-/**
+/** 
  * Rotación derecha
  *     b                                 a
  *    / \                               / \

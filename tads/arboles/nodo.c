@@ -26,7 +26,7 @@ NodoArbol crear_nodo_arbol(TipoElemento te) {
     na->datos = te;
     na->hi = NULL;
     na->hd = NULL;
-    na->altura = 0;
+    na->altura = 1;
     return na;
 };
 

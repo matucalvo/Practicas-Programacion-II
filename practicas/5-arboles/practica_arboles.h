@@ -57,4 +57,9 @@ ArbolAVL arbolAvlDesdeArbolBinario(ArbolBinario ab);
 
 
 
+int nivel_nodo(NodoArbol raiz, NodoArbol nodo, int nivel);
+int alturaArbol(ArbolBinario a);
+
+
+
 #endif // PRACTICA_ARBOLES_H

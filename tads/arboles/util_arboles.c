@@ -50,6 +50,11 @@ Iterador iterador_pre_orden(NodoArbol nodo_arbol) {
 }
 
 void iterador_in_orden_recursivo(Lista l, NodoArbol nodo) {
+    if (nodo != NULL){
+        iterador_in_orden_recursivo(l, nodo->hi);
+        l_agregar(l, nodo->datos);
+        iterador_in_orden_recursivo(l, nodo->hd);
+    }
 }
 
 Iterador iterador_in_orden(NodoArbol nodo_arbol) {
@@ -59,6 +64,11 @@ Iterador iterador_in_orden(NodoArbol nodo_arbol) {
 }
 
 void iterador_pos_orden_recursivo(Lista l, NodoArbol nodo) {
+    if (nodo != NULL){
+        iterador_pos_orden_recursivo(l, nodo->hi);
+        iterador_pos_orden_recursivo(l, nodo->hd);
+        l_agregar(l, nodo->datos);
+    }
 }
 
 Iterador iterador_post_orden(NodoArbol nodo_arbol) {
