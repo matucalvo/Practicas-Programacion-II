@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <printf.h>
 #include "arbol-binario.h"
 #include "nodo.h"
 
